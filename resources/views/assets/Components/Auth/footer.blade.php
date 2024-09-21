@@ -14,6 +14,7 @@
     <!-- Custom Js -->
     <script src="{{asset('assets/')}}/js/admin.js"></script>
     <script src="{{asset('assets/')}}/js/pages/examples/sign-in.js"></script>
+    @yield('content-js')
 </body>
 
 </html>

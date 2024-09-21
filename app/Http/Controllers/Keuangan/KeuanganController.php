@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Keuangan;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class KeuanganController extends Controller
 {
     //
-
     public function index(Request $request){
-        return view('profile.index');
+        return view('keuangan.index');
     }
 }

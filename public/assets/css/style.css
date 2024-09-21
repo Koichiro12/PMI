@@ -7720,7 +7720,7 @@ fieldset[disabled] .form-control {
 
 /* Login Page ================================== */
 .login-page {
-  background-color: #00BCD4;
+  background: linear-gradient(90deg, rgba(33,36,0,1) 0%, rgba(232,241,25,1) 54%, rgba(255,205,20,1) 100%);
   padding-left: 0;
   max-width: 360px;
   margin: 5% auto;

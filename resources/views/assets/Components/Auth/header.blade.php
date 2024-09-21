@@ -23,4 +23,5 @@
 
     <!-- Custom Css -->
     <link href="{{asset('assets/')}}/css/style.css" rel="stylesheet">
+    @yield('content-css')
 </head>

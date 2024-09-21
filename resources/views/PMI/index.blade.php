@@ -2,8 +2,8 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h1>Biodata</h1>
-            <small>Data Biodata yang sudah di input akan muncul disini !</small>
+            <h1>PMI</h1>
+            <small>Data PMI yang sudah di input akan muncul disini !</small>
         </div>
 
         

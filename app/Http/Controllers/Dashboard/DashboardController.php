@@ -9,7 +9,8 @@ class DashboardController extends Controller
 {
     //
 
-    public function template(Request $request){
-        return view('template.index');
+    public function index(){
+        return view('dashboard.index');
     }
+
 }

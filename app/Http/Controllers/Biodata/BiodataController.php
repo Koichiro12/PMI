@@ -13,6 +13,7 @@ class BiodataController extends Controller
     public function index()
     {
         //
+        return view('biodata.index');
     }
 
     /**
