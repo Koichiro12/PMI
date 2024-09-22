@@ -13,7 +13,7 @@
                 <ul class="dropdown-menu pull-right">
                     <li><a href="{{route('profile')}}"><i class="material-icons">person</i>Profile</a></li>
                     <li role="seperator" class="divider"></li>
-                    <li><a href="{{route('logout')}}"><i class="material-icons">input</i>Sign Out</a></li>
+                    <li><a href="{{route('logout')}}"  class="a-confirm"><i class="material-icons">input</i>Sign Out</a></li>
                 </ul>
             </div>
         </div>
@@ -55,7 +55,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('logout')}}">
+                <a href="{{route('logout')}}"  class="a-confirm">
                     <i class="material-icons">input</i>
                     <span>Sign Out</span>
                 </a>

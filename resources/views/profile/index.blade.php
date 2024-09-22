@@ -19,26 +19,26 @@
                         <center>
                             Profile
                             <div class="image">
-                                <img src="{{ asset('assets/') }}{{ auth()->user()->foto != '-' ? auth()->user()->foto : '/images/user.png' }}"
+                                <img src="{{ asset('assets/') }}{{ $data->foto != '-' ? $data->foto : '/images/user.png' }}"
                                     width="100" height="100" class="img img-circle" alt="User" />
                             </div>
                             <br>
-                            <span class="badge bg-green">{{ auth()->user()->role }}</span>
+                            <span class="badge bg-green">{{ $data->role }}</span>
                         </center>
                         <hr>
                         <div class="table-responsive">
                             <table class="table">
                                 <tr>
                                     <td width="25%">Nama</td>
-                                    <td>: {{ auth()->user()->name }}</td>
+                                    <td>: {{ $data->name }}</td>
                                 </tr>
                                 <tr>
                                     <td width="25%">Username</td>
-                                    <td>: {{ auth()->user()->username }}</td>
+                                    <td>: {{ $data->username }}</td>
                                 </tr>
                                 <tr>
                                     <td width="25%">Email</td>
-                                    <td>: {{ auth()->user()->email }}</td>
+                                    <td>: {{ $data->email }}</td>
                                 </tr>
                                 <tr>
                                     <td width="25%">Password</td>
@@ -46,11 +46,11 @@
                                 </tr>
                                 <tr>
                                     <td width="25%">Role</td>
-                                    <td>: {{ auth()->user()->role }}</td>
+                                    <td>: {{ $data->role }}</td>
                                 </tr>
                             </table>
                         </div>
-                        <a href="{{ route('logout') }}" class="btn btn-block bg-red">Sign Out</a>
+                        <a href="{{ route('logout') }}" class="btn btn-block bg-red a-confirm">Sign Out</a>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                             <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
-                                        <img src="{{ asset('assets/') }}{{ auth()->user()->foto != '-' ? auth()->user()->foto : '/images/user.png' }}"
+                                        <img src="{{ asset('assets/') }}{{ $data->foto != '-' ? $data->foto : '/images/user.png' }}"
                                         width="100" height="100" class="img" id="view_img" alt="User" />
                                       
                                         <div class="form-line">
@@ -81,7 +81,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control">
+                                            <input type="text" id="name" name="name" value="{{$data->name}}" class="form-control">
                                             <label class="form-label">Name</label>
                                         </div>
                                     </div>
@@ -89,7 +89,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control">
+                                            <input type="text" id="username" name="username" value="{{$data->username}}" class="form-control">
                                             <label class="form-label">Username</label>
                                         </div>
                                     </div>
@@ -97,7 +97,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control">
+                                            <input type="email" id="email" name="email" value="{{$data->email}}" class="form-control">
                                             <label class="form-label">Email</label>
                                         </div>
                                     </div>
@@ -105,12 +105,16 @@
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control">
+                                            <input type="password" id="password" name="password" class="form-control">
                                             <label class="form-label">Password</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="m-t-15 d-flex">
+                                <button type="submit" class="btn btn-primary form-confirm">Simpan</button>
+                            </div>
+                           
                         </form>
                         
                     </div>
@@ -119,4 +123,11 @@
         </div>
 
     </div>
+@endsection
+@section('content-js')
+<script>
+    $('#foto').change(function(event) {
+        $("#view_img").fadeIn("fast").attr('src', URL.createObjectURL(event.target.files[0]));
+    });
+</script>
 @endsection
