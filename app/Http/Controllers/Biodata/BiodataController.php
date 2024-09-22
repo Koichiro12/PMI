@@ -16,6 +16,11 @@ class BiodataController extends Controller
         return view('biodata.index');
     }
 
+
+    public function list(){
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      */

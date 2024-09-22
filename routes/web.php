@@ -31,6 +31,7 @@ Route::group(['middleware'=>['prevent-back','auth']],function(){
     Route::post('/profile/update',[ProfileController::class,'updateProfile'])->name('profile.update');
 
     //Biodata
+    Route::get('biodata/list',[BiodataController::class,'list'])->name('biodata.list');
     Route::resource('biodata',BiodataController::class);
     
     

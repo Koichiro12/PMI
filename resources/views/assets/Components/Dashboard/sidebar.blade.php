@@ -35,13 +35,13 @@
                     <span>Biodata</span>
                 </a>
             </li>
-            <li {!!url()->current() == route('pmi.index') ? 'class="active"' : ''!!}>
+            <li {!!url()->current() == route('pmi.index') || str_contains(url()->current(),'pmi') ? 'class="active"' : ''!!}>
                 <a href="{{route('pmi.index')}}">
                     <i class="material-icons">contact_page</i>
                     <span>PMI</span>
                 </a>
             </li>
-            <li {!!url()->current() == route('keuangan.index') ? 'class="active"' : ''!!}>
+            <li {!!url()->current() == route('keuangan.index') || str_contains(url()->current(),'keuangan') ? 'class="active"' : ''!!}>
                 <a href="{{route('keuangan.index')}}">
                     <i class="material-icons">payments</i>
                     <span>Keuangan</span>
