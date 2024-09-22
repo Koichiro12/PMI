@@ -44,6 +44,6 @@ class ProfileController extends Controller
         if($ud){
             return redirect()->back()->with('success','Update Data Berhasil');
         }
-        return redirect()->back()->with('success','Update Data Gagal, Silahkan coba lagi beberapa saat lagi !');
+        return redirect()->back()->with('error','Updatvalue: e Data Gagal, Silahkan coba lagi beberapa saat lagi !');
     }
 }

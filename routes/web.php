@@ -32,10 +32,17 @@ Route::group(['middleware'=>['prevent-back','auth']],function(){
 
     //Biodata
     Route::resource('biodata',BiodataController::class);
+    
+    
     //PMI
     Route::get('/PMI',[PMIController::class,'index'])->name('pmi.index');
+    
+    
     //Keuangan
     Route::get('/Keuangan',[KeuanganController::class,'index'])->name('keuangan.index');
+    
+    
     //Pengguna
+    Route::get('pengguna/list',[UsersController::class,'list'])->name('pengguna.list');
     Route::resource('pengguna',UsersController::class);
 });

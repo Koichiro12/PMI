@@ -8,6 +8,7 @@
     <title>Welcome To | Bootstrap Based Admin Template - Material Design</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
@@ -26,11 +27,13 @@
     <!-- Sweetalert Css -->
     <link href="{{ asset('assets/') }}/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
 
+    <link href="{{ asset('assets/') }}/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
     <!-- Custom Css -->
     <link href="{{ asset('assets/') }}/css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('assets/') }}/css/themes/all-themes.css" rel="stylesheet" />
+
     @yield('content-css')
 </head>
 

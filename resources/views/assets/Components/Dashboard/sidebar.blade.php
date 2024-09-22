@@ -29,7 +29,7 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li {!!url()->current() == route('biodata.index') ? 'class="active"' : ''!!}>
+            <li {!!url()->current() == route('biodata.index')  || str_contains(url()->current(),'biodata') ? 'class="active"' : ''!!}>
                 <a href="{{route('biodata.index')}}">
                     <i class="material-icons">diversity_1</i>
                     <span>Biodata</span>
@@ -48,7 +48,7 @@
                 </a>
             </li>
             <li class="header">Lainnya</li>
-            <li {!!url()->current() == route('pengguna.index') ? 'class="active"' : ''!!}>
+            <li {!!url()->current() == route('pengguna.index') || str_contains(url()->current(),'pengguna') ? 'class="active"' : ''!!}>
                 <a href="{{route('pengguna.index')}}">
                     <i class="material-icons">group</i>
                     <span>Pengguna</span>

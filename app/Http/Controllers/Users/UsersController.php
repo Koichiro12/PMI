@@ -3,10 +3,17 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class UsersController extends Controller
 {
+
+    public function __construct()
+    {
+
+    }
     /**
      * Display a listing of the resource.
      */
@@ -15,6 +22,16 @@ class UsersController extends Controller
         //
         return view('users.index');
     }
+    /**
+     * Listing of the resource with Ajax.
+     */
+    public function list(Request $request){
+        if($request->ajax()){
+            $users = User::query();
+            return DataTables::of($users)->make();
+        }
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -22,6 +39,7 @@ class UsersController extends Controller
     public function create()
     {
         //
+        return view('users.form');
     }
 
     /**
@@ -46,6 +64,8 @@ class UsersController extends Controller
     public function edit(string $id)
     {
         //
+        $data = User::findOrFail($id);
+        return view('users.form',compact(['data']));
     }
 
     /**
@@ -62,5 +82,6 @@ class UsersController extends Controller
     public function destroy(string $id)
     {
         //
+        //return redirect()->route('pengguna.index');
     }
 }

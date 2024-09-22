@@ -19,11 +19,16 @@
 <!-- SweetAlert Plugin Js -->
 <script src="{{ asset('assets/') }}/plugins/sweetalert/sweetalert.min.js"></script>
 
+  <!-- Jquery DataTable Plugin Js -->
+  <script src="{{ asset('assets/') }}/plugins/jquery-datatable/jquery.dataTables.js"></script>
+  <script src="{{ asset('assets/') }}/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+  <script src="{{ asset('assets/') }}/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
 <!-- Custom Js -->
 <script src="{{ asset('assets/') }}/js/admin.js"></script>
 
 <script src="{{ asset('assets/') }}/js/script.js"></script>
 <script src="{{ asset('assets/') }}/js/pages/index.js"></script>
+
 @yield('content-js')
 </body>
 
