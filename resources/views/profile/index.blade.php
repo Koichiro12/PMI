@@ -19,7 +19,7 @@
                         <center>
                             Profile
                             <div class="image">
-                                <img src="{{ asset('assets/') }}{{ $data->foto != '-' ? $data->foto : '/images/user.png' }}"
+                                <img src="{{ $data->foto != '-' ? asset('uploads/'.$data->foto) : asset('assets/images/user.png') }}"
                                     width="100" height="100" class="img img-circle" alt="User" />
                             </div>
                             <br>
@@ -69,7 +69,7 @@
                             <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
-                                        <img src="{{ asset('assets/') }}{{ $data->foto != '-' ? $data->foto : '/images/user.png' }}"
+                                        <img src="{{ $data->foto != '-' ? asset('uploads/'.$data->foto) : asset('assets/images/user.png') }}"
                                         width="100" height="100" class="img" id="view_img" alt="User" />
                                       
                                         <div class="form-line">

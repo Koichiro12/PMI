@@ -3,7 +3,7 @@
     <!-- User Info -->
     <div class="user-info">
         <div class="image">
-            <img src="{{asset('assets/')}}{{ auth()->user()->foto != '-' ? auth()->user()->foto : '/images/user.png'}}" width="48" height="48" alt="User" />
+            <img src="{{ auth()->user()->foto != '-' ? asset('uploads/'.auth()->user()->foto) : asset('assets/images/user.png')}}" width="48" height="48" alt="User" />
         </div>
         <div class="info-container">
             <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{auth()->user()->name}}</div>
