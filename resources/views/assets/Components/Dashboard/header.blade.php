@@ -27,6 +27,8 @@
     <!-- Sweetalert Css -->
     <link href="{{ asset('assets/') }}/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
 
+    <link href="{{ asset('assets/') }}/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
     <link href="{{ asset('assets/') }}/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
     <!-- Custom Css -->
     <link href="{{ asset('assets/') }}/css/style.css" rel="stylesheet">

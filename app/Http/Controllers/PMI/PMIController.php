@@ -11,4 +11,9 @@ class PMIController extends Controller
     public function index(Request $request){
         return view('pmi.index');
     }
+
+    public function list(Request $request){
+
+    }
+
 }

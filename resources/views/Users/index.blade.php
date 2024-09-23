@@ -5,7 +5,16 @@
             <h1>Pengguna</h1>
             <small>Data Pengguna yang sudah terdaftar akan muncul disini !</small>
         </div>
-
+        @if (session()->has('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if (session()->has('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
         <div class="row clearfix">
             <div class="col-md-12">
                 <div class="card">
@@ -59,9 +68,11 @@
                         data: 'foto',
                         name: 'foto',
                         render: function(data, type, row, meta) {
-                            let dates = 'images/user.png';
-                            let dataFoto = data;
-                            return '<img src="{!! auth()->user()->foto != '-' ? asset("uploads/'+dataFoto+'") : asset("assets/'+dates+'") !!}" width="50" height="50" class="img img-circle" alt="User"  />';
+                            let dates = '{!!asset("assets/images/user.png")!!}';
+                            if(data != '-'){
+                                dates = '{!!asset("uploads/'+data+'")!!}';
+                            }
+                            return '<img src="'+dates+'" width="50" height="50" class="img img-circle" alt="User"  />';
                         }
                     },
                     {
