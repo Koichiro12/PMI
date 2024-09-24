@@ -10,6 +10,7 @@ class Biodata extends AppModel
     use HasFactory;
     protected $fillable = [
         'kode_biodata',
+        'foto',
         'nama',
         'tempat_lahir',
         'tgl_lahir',

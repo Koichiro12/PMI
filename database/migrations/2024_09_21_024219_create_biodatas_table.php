@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('biodata', function (Blueprint $table) {
             $table->id();
             $table->string('kode_biodata');
+            $table->text('foto');
             $table->string('nama');
             $table->string('tempat_lahir');
             $table->date('tgl_lahir');
