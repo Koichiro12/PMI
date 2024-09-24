@@ -336,6 +336,106 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="fit_container">
+                                <div class="fit">
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" id="fit_name[]" name="fit_name[]"
+                                                    class="form-control">
+                                                <label class="form-label">Name</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" id="fit_relation[]" name="fit_relation[]"
+                                                    class="form-control">
+                                                <label class="form-label">Hubungan</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" id="fit_location[]" name="fit_location[]"
+                                                    class="form-control">
+                                                <label class="form-label">Lokasi</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <h6>Pengalaman Kerja</h6>
+                                <small>Domestic</small>
+                            </div>
+                            <div class="domestic_container">
+                                <div class="domestic">
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" id="domestic_masa_kerja[]" name="domestic_masa_kerja[]"
+                                                    class="form-control">
+                                                <label class="form-label">Masa Kerja</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" id="domestic_wilayah_kerja[]" name="domestic_wilayah_kerja[]"
+                                                    class="form-control">
+                                                <label class="form-label">Wilayah Kerja</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" id="domestic_lokasi_kerja[]" name="domestic_lokasi_kerja[]"
+                                                    class="form-control">
+                                                <label class="form-label">Lokasi</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <small>Overseas</small>
+                            </div>
+                            <div class="overseas_container">
+                                <div class="overseas">
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" id="overseas_masa_kerja[]" name="overseas_masa_kerja[]"
+                                                    class="form-control">
+                                                <label class="form-label">Masa Kerja</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" id="overseas_wilayah_kerja[]" name="overseas_wilayah_kerja[]"
+                                                    class="form-control">
+                                                <label class="form-label">Wilayah Kerja</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" id="overseas_lokasi_kerja[]" name="overseas_lokasi_kerja[]"
+                                                    class="form-control">
+                                                <label class="form-label">Lokasi</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
