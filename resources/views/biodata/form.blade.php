@@ -25,6 +25,10 @@
                         @csrf
                         <div class="row clearfix">
                             <div class="col-md-12">
+                                    <small>Data Diri</small>
+                                    <hr>
+                            </div>
+                            <div class="col-md-12">
                                 <div class="form-group form-float">
                                     <img src="{{ isset($data) && $data->foto != '-' ? asset('uploads/' . $data->foto) : asset('assets/images/user.png') }}"
                                         width="100" height="100" class="img" id="view_img" alt="User" />
@@ -65,7 +69,7 @@
                             <div class="col-sm-5">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="date" id="tgl_lahir" name="tgl_lahir" value="{{ isset($data) ? $data->tgl_lahir : '' }}"
+                                        <input type="date" id="tgl_lahir" name="tgl_lahir" value="{{ isset($data) ? $data->tgl_lahir : date('Y-m-d') }}"
                                             class="form-control">
                                         <label class="form-label">Tanggal Lahir</label>
                                     </div>
@@ -162,6 +166,173 @@
                                         <input type="text" id="bahasa" name="bahasa" value="{{ isset($data) ? $data->bahasa : '' }}"
                                             class="form-control">
                                         <label class="form-label">Bahasa</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <small>Anggota Keluarga</small>
+                                <hr>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="checkbox" name="status_ayah" id="status_ayah" class="filled-in chk-col-yellow" {{isset($data) && $data->status_ayah == '1' ? 'checked' : ''}}>
+                                        <label for="status_ayah">Ayah</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" id="umur_ayah" name="umur_ayah" value="{{ isset($data) ? $data->umur_ayah : '0' }}"
+                                            class="form-control">
+                                        <label class="form-label">Umur Ayah</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="checkbox" name="status_ibu" id="status_ibu" class="filled-in chk-col-yellow" {{isset($data) && $data->status_ibu == '1' ? 'checked' : ''}}>
+                                        <label for="status_ibu">Ibu</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" id="umur_ibu" name="umur_ibu" value="{{ isset($data) ? $data->umur_ibu : '0' }}"
+                                            class="form-control">
+                                        <label class="form-label">Umur Ibu</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" id="anak_ke" name="anak_ke" value="{{ isset($data) ? $data->anak_ke : '0' }}"
+                                            class="form-control">
+                                        <label class="form-label">Anak ke</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" id="jumlah_saudara" name="jumlah_saudara" value="{{ isset($data) ? $data->jumlah_saudara : '0' }}"
+                                            class="form-control">
+                                        <label class="form-label">Jumlah Saudara</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" id="kakak_laki_laki" name="jumlah_saudara" value="{{ isset($data) ? $data->kakak_laki_laki : '0' }}"
+                                            class="form-control">
+                                        <label class="form-label">Kakak Laki Laki</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" id="kakak_perempuan" name="kakak_perempuan" value="{{ isset($data) ? $data->kakak_perempuan : '0' }}"
+                                            class="form-control">
+                                        <label class="form-label">Kakak Perempuan</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" id="adik_laki_laki" name="adik_laki_laki" value="{{ isset($data) ? $data->adik_laki_laki : '0' }}"
+                                            class="form-control">
+                                        <label class="form-label">Adik Laki Laki</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" id="adik_perempuan" name="adik_perempuan" value="{{ isset($data) ? $data->adik_perempuan : '0' }}"
+                                            class="form-control">
+                                        <label class="form-label">Adik Perempuan</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" id="nama_suami" name="nama_suami" value="{{ isset($data) ? $data->nama_suami : '' }}"
+                                            class="form-control">
+                                        <label class="form-label">Nama Suami</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" id="karir_suami" name="karir_suami" value="{{ isset($data) ? $data->karir_suami : '' }}"
+                                            class="form-control">
+                                        <label class="form-label">Karir Suami</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" id="jml_anak" name="jml_anak" value="{{ isset($data) ? $data->jml_anak : '0' }}"
+                                            class="form-control">
+                                        <label class="form-label">Jumlah Anak</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" id="jml_anak_laki_laki" name="jml_anak_laki_laki" value="{{ isset($data) ? $data->jml_anak_laki_laki : '0' }}"
+                                            class="form-control">
+                                        <label class="form-label">Anak Laki Laki</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" id="umur_anak_laki_laki" name="umur_anak_laki_laki" value="{{ isset($data) ? $data->umur_anak_laki_laki : '' }}"
+                                            class="form-control">
+                                        <label class="form-label">Umur Anak Laki Laki</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" id="jml_anak_perempuan" name="jml_anak_perempuan" value="{{ isset($data) ? $data->jml_anak_perempuan : '0' }}"
+                                            class="form-control">
+                                        <label class="form-label">Anak Perempuan</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" id="umur_anak_perempuan" name="umur_anak_perempuan" value="{{ isset($data) ? $data->umur_anak_perempuan : '' }}"
+                                            class="form-control">
+                                        <label class="form-label">Umur Anak Perempuan</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <small>Relasi dan Pengalaman Kerja</small>
+                                <hr>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="checkbox" name="family_in_taiwan" id="family_in_taiwan" class="filled-in chk-col-yellow" {{isset($data) && $data->family_in_taiwan == '1' ? 'checked' : ''}}>
+                                        <label for="family_in_taiwan">Apakah ada saudara atau teman di Taiwan ?</label>
                                     </div>
                                 </div>
                             </div>
