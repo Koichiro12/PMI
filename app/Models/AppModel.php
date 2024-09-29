@@ -26,7 +26,7 @@ class AppModel extends Model
         $exception = array_merge($exception, ['_token', '_method']);
         $data = $request->except($exception);
         $data['created_at'] = date('Y-m-d H:i:s');
-        return self::insert($data);
+        return self::insertGetId($data);
     }
 
     public static function updateData($id,$request,$exception = []){

@@ -46,9 +46,9 @@ class Biodata extends AppModel
 
 
     public function BiodataExperiences(){
-        return $this->hasMany(BiodataExperience::class,'biodata_id');
+        return $this->hasMany(BiodataExperience::class);
     }
     public function BiodataFamilyOverseas(){
-        return $this->hasMany(BiodataFamilyOverseas::class,'biodata_id');
+        return $this->hasMany(BiodataFamilyOverseas::class);
     }
 }

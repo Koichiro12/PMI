@@ -22,10 +22,18 @@
                 </div>
                 <div class="body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="tbl_list">
                             <thead>
                                 <th>No</th>
                                 <th>Kode</th>
+                                <th>Foto</th>
+                                <th>Nama</th>
+                                <th>Tempat Lahir</th>
+                                <th>Tanggal Lahir</th>
+                                <th>L/P</th>
+                                <th>Kewarganegaraan</th>
+                                <th>Pendidikan</th>
+                                <th>Bahasa</th>
                                 <th>Aksi</th>
                             </thead>
                         </table>
@@ -51,16 +59,54 @@
                         }
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'kode_biodata',
+                        name: 'kode_biodata'
                     },
-                    
+                    {
+                        data: 'foto',
+                        name: 'foto',
+                        render: function(data, type, row, meta) {
+                            let dates = '{!!asset("assets/images/user.png")!!}';
+                            if(data != '-'){
+                                dates = '{!!asset("uploads/'+data+'")!!}';
+                            }
+                            return '<img src="'+dates+'" width="50" height="50" class="img img-circle" alt="User"  />';
+                        }
+                    },
+                    {
+                        data: 'nama',
+                        name: 'nama'
+                    },
+                    {
+                        data: 'tempat_lahir',
+                        name: 'tempat_lahir'
+                    },
+                    {
+                        data: 'tgl_lahir',
+                        name: 'tgl_lahir'
+                    },
+                    {
+                        data: 'jenis_kelamin',
+                        name: 'jenis_kelamin'
+                    },
+                    {
+                        data: 'kewarganegaraan',
+                        name: 'kewarganegaraan'
+                    },
+                    {
+                        data: 'pendidikan',
+                        name: 'pendidikan'
+                    },
+                    {
+                        data: 'bahasa',
+                        name: 'bahasa'
+                    },
                     {
                         data: "id",
                         name: "id",
                         render: function(data, type, row, meta) {
                             let id = data;
-                            return '<form action="{!! url()->current() . "/'+id+'" !!}" method="POST" enctype="multipart/form-data"> @csrf @method('DELETE') <a href="{!! url()->current() . "/'+id+'/edit" !!}" class="btn btn-warning" name="edit" id="edit" >edit</a><button type="submit" onclick="confirmDelete(event,this)" class="btn btn-danger">hapus</button></form>';
+                            return '<form action="{!! url()->current() . "/'+id+'" !!}" method="POST" enctype="multipart/form-data"> @csrf @method('DELETE') <a href="{!! url()->current() . "/'+id+'/printPdf" !!}" class="btn btn-primary btn-block m-2" name="print_pdf" id="print_pdf" target="_blank" >Download (PDF) </a> <a href="{!! url()->current() . "/'+id+'/edit" !!}" class="btn btn-warning btn-block m-2" name="edit" id="edit" >edit</a><button type="submit" onclick="confirmDelete(event,this)" class="btn btn-danger btn-block m-2">hapus</button></form>';
                         }
                     },
                 ]
