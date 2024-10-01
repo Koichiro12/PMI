@@ -5,6 +5,7 @@ use App\Http\Controllers\Biodata\BiodataController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Keuangan\KeuanganController;
+use App\Http\Controllers\PMI\KategoriFileController;
 use App\Http\Controllers\PMI\PMIController;
 use App\Http\Controllers\Users\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,10 @@ Route::group(['middleware'=>['prevent-back','auth']],function(){
     
     
     //PMI
+    Route::resource('category_files',KategoriFileController::class);
+    Route::get('kategori_file/list',[KategoriFileController::class,'list'])->name('kategori_file.list');
+
+
     Route::get('/PMI',[PMIController::class,'index'])->name('pmi.index');
     
     
@@ -47,4 +52,4 @@ Route::group(['middleware'=>['prevent-back','auth']],function(){
     //Pengguna
     Route::get('pengguna/list',[UsersController::class,'list'])->name('pengguna.list');
     Route::resource('pengguna',UsersController::class);
-});
+}); 

@@ -11,6 +11,8 @@ class Biodata extends AppModel
     protected $fillable = [
         'kode_biodata',
         'foto',
+        'nik',
+        'asal',
         'nama',
         'tempat_lahir',
         'tgl_lahir',

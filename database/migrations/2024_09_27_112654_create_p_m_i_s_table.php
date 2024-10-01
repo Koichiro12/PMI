@@ -11,9 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('p_m_i_s', function (Blueprint $table) {
+        Schema::create('pmi', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('biodata_id');
+            $table->string('nik');
+            $table->string('nama');
+            $table->string('umur');
+            $table->string('jenis_kelamin');
+            $table->text('asal');
+            $table->string('paspor');
+            $table->string('visa');
+            $table->string('pk_number');
             $table->timestamps();
+            
+            $table->foreign('biodata_id')->references('id')->on('biodata')->onDelete('cascade');
         });
     }
 
@@ -22,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('p_m_i_s');
+        Schema::dropIfExists('pmi');
     }
 };

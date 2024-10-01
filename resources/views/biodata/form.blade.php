@@ -52,36 +52,36 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('kode_biodata') error @enderror">
                                             <input type="text" id="kode_biodata" name="kode_biodata"
-                                                value="{{ isset($data) ? $data->kode_biodata : '' }}" class="form-control">
+                                                value="{{ isset($data) ? $data->kode_biodata : old('kode_biodata') }}" class="form-control">
                                             <label class="form-label">Kode Biodata</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('nama') error @enderror">
                                             <input type="text" id="name" name="nama"
-                                                value="{{ isset($data) ? $data->nama : '' }}" class="form-control">
+                                                value="{{ isset($data) ? $data->nama : old('nama') }}" class="form-control">
                                             <label class="form-label">Name</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('tempat_lahir') error @enderror">
                                             <input type="text" id="tempat_lahir" name="tempat_lahir"
-                                                value="{{ isset($data) ? $data->tempat_lahir : '' }}" class="form-control">
+                                                value="{{ isset($data) ? $data->tempat_lahir : old('tempat_lahir') }}" class="form-control">
                                             <label class="form-label">Tempat Lahir</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-5">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('tgl_lahir') error @enderror">
                                             <input type="date" id="tgl_lahir" name="tgl_lahir"
-                                                value="{{ isset($data) ? $data->tgl_lahir : date('Y-m-d') }}"
+                                                value="{{ isset($data) ? $data->tgl_lahir : old('tgl_lahir') }}"
                                                 class="form-control">
                                             <label class="form-label">Tanggal Lahir</label>
                                         </div>
@@ -89,16 +89,16 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('umur') error @enderror">
                                             <input type="number" id="umur" name="umur"
-                                                value="{{ isset($data) ? $data->umur : '0' }}" class="form-control">
+                                                value="{{ isset($data) ? $data->umur : old('umur') }}" class="form-control">
                                             <label class="form-label">Umur</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('jenis_kelamin') error @enderror">
                                             <select name="jenis_kelamin" id="jenis_kelamin" class="form-control show-tick">
                                                 <option value="L"
                                                     {{ isset($data) && $data->jenis_kelamin == 'L' ? 'selected' : '' }}>
@@ -113,25 +113,25 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('tb') error @enderror">
                                             <input type="number" id="tb" name="tb"
-                                                value="{{ isset($data) ? $data->tb : '0' }}" class="form-control">
+                                                value="{{ isset($data) ? $data->tb : old('tb') }}" class="form-control">
                                             <label class="form-label">Tinggi Badan</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('bb') error @enderror">
                                             <input type="number" id="bb" name="bb"
-                                                value="{{ isset($data) ? $data->bb : '0' }}" class="form-control">
+                                                value="{{ isset($data) ? $data->bb : old('bb') }}" class="form-control">
                                             <label class="form-label">Berat Badan</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('agama') error @enderror">
                                             <select name="agama" id="agama" class="form-control show-tick">
                                                 <option value="Islam"
                                                     {{ isset($data) && $data->agama == 'Islam' ? 'selected' : '' }}>
@@ -157,9 +157,9 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('kewarganegaraan') error @enderror">
                                             <input type="text" id="kewarganegaraan" name="kewarganegaraan"
-                                                value="{{ isset($data) ? $data->kewarganegaraan : '' }}"
+                                                value="{{ isset($data) ? $data->kewarganegaraan : old('kewarganegaraan') }}"
                                                 class="form-control">
                                             <label class="form-label">kewarganegaraan</label>
                                         </div>
@@ -167,18 +167,18 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('pendidikan') error @enderror">
                                             <input type="text" id="pendidikan" name="pendidikan"
-                                                value="{{ isset($data) ? $data->pendidikan : '' }}" class="form-control">
+                                                value="{{ isset($data) ? $data->pendidikan : old('pendidikan') }}" class="form-control">
                                             <label class="form-label">Pendidikan</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('bahasa') error @enderror">
                                             <input type="text" id="bahasa" name="bahasa"
-                                                value="{{ isset($data) ? $data->bahasa : '' }}" class="form-control">
+                                                value="{{ isset($data) ? $data->bahasa : old('bahasa') }}" class="form-control">
                                             <label class="form-label">Bahasa</label>
                                         </div>
                                     </div>
@@ -189,7 +189,7 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('status_ayah') error @enderror">
                                             <input type="checkbox" name="status_ayah" id="status_ayah"
                                                 class="filled-in chk-col-yellow"
                                                 {{ isset($data) && $data->status_ayah == '1' ? 'checked' : '' }}>
@@ -199,16 +199,16 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('umur_ayah') error @enderror">
                                             <input type="number" id="umur_ayah" name="umur_ayah"
-                                                value="{{ isset($data) ? $data->umur_ayah : '0' }}" class="form-control">
+                                                value="{{ isset($data) ? $data->umur_ayah : old('umur_ayah') }}" class="form-control">
                                             <label class="form-label">Umur Ayah</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('status_ibu') error @enderror">
                                             <input type="checkbox" name="status_ibu" id="status_ibu"
                                                 class="filled-in chk-col-yellow"
                                                 {{ isset($data) && $data->status_ibu == '1' ? 'checked' : '' }}>
@@ -218,27 +218,27 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('umur_ibu') error @enderror">
                                             <input type="number" id="umur_ibu" name="umur_ibu"
-                                                value="{{ isset($data) ? $data->umur_ibu : '0' }}" class="form-control">
+                                                value="{{ isset($data) ? $data->umur_ibu : old('umur_ibu') }}" class="form-control">
                                             <label class="form-label">Umur Ibu</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('anak_ke') error @enderror">
                                             <input type="number" id="anak_ke" name="anak_ke"
-                                                value="{{ isset($data) ? $data->anak_ke : '0' }}" class="form-control">
+                                                value="{{ isset($data) ? $data->anak_ke : old('anak_ke') }}" class="form-control">
                                             <label class="form-label">Anak ke</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('jumlah_saudara') error @enderror">
                                             <input type="number" id="jumlah_saudara" name="jumlah_saudara"
-                                                value="{{ isset($data) ? $data->jumlah_saudara : '0' }}"
+                                                value="{{ isset($data) ? $data->jumlah_saudara : old('jumlah_saudara') }}"
                                                 class="form-control">
                                             <label class="form-label">Jumlah Saudara</label>
                                         </div>
@@ -246,9 +246,9 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('kakak_laki_laki') error @enderror">
                                             <input type="number" id="kakak_laki_laki" name="jumlah_saudara"
-                                                value="{{ isset($data) ? $data->kakak_laki_laki : '0' }}"
+                                                value="{{ isset($data) ? $data->kakak_laki_laki : old('kakak_laki_laki') }}"
                                                 class="form-control">
                                             <label class="form-label">Kakak Laki Laki</label>
                                         </div>
@@ -256,9 +256,9 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('kakak_perempuan') error @enderror">
                                             <input type="number" id="kakak_perempuan" name="kakak_perempuan"
-                                                value="{{ isset($data) ? $data->kakak_perempuan : '0' }}"
+                                                value="{{ isset($data) ? $data->kakak_perempuan : old('kakak_perempuan') }}"
                                                 class="form-control">
                                             <label class="form-label">Kakak Perempuan</label>
                                         </div>
@@ -266,9 +266,9 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('adik_laki_laki') error @enderror">
                                             <input type="number" id="adik_laki_laki" name="adik_laki_laki"
-                                                value="{{ isset($data) ? $data->adik_laki_laki : '0' }}"
+                                                value="{{ isset($data) ? $data->adik_laki_laki : old('adik_laki_laki') }}"
                                                 class="form-control">
                                             <label class="form-label">Adik Laki Laki</label>
                                         </div>
@@ -276,9 +276,9 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('adik_perempuan') error @enderror">
                                             <input type="number" id="adik_perempuan" name="adik_perempuan"
-                                                value="{{ isset($data) ? $data->adik_perempuan : '0' }}"
+                                                value="{{ isset($data) ? $data->adik_perempuan : old('adik_perempuan') }}"
                                                 class="form-control">
                                             <label class="form-label">Adik Perempuan</label>
                                         </div>
@@ -286,9 +286,9 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('status_pernikahan') error @enderror">
                                             <input type="text" id="status_pernikahan" name="status_pernikahan"
-                                                value="{{ isset($data) ? $data->status_pernikahan : '' }}"
+                                                value="{{ isset($data) ? $data->status_pernikahan : old('status_pernikahan') }}"
                                                 class="form-control">
                                             <label class="form-label">Status Pernikahan</label>
                                         </div>
@@ -296,18 +296,18 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('nama_suami') error @enderror">
                                             <input type="text" id="nama_suami" name="nama_suami"
-                                                value="{{ isset($data) ? $data->nama_suami : '' }}" class="form-control">
+                                                value="{{ isset($data) ? $data->nama_suami : old('nama_suami') }}" class="form-control">
                                             <label class="form-label">Nama Suami</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('karir_suami') error @enderror">
                                             <input type="text" id="karir_suami" name="karir_suami"
-                                                value="{{ isset($data) ? $data->karir_suami : '' }}"
+                                                value="{{ isset($data) ? $data->karir_suami : old('karir_suami') }}"
                                                 class="form-control">
                                             <label class="form-label">Karir Suami</label>
                                         </div>
@@ -315,18 +315,18 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('jml_anak') error @enderror">
                                             <input type="number" id="jml_anak" name="jml_anak"
-                                                value="{{ isset($data) ? $data->jml_anak : '0' }}" class="form-control">
+                                                value="{{ isset($data) ? $data->jml_anak : old('jml_anak') }}" class="form-control">
                                             <label class="form-label">Jumlah Anak</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('jml_anak_laki_laki') error @enderror">
                                             <input type="number" id="jml_anak_laki_laki" name="jml_anak_laki_laki"
-                                                value="{{ isset($data) ? $data->jml_anak_laki_laki : '0' }}"
+                                                value="{{ isset($data) ? $data->jml_anak_laki_laki : old('jml_anak_laki_laki') }}"
                                                 class="form-control">
                                             <label class="form-label">Anak Laki Laki</label>
                                         </div>
@@ -334,9 +334,9 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('umur_anak_laki_laki') error @enderror">
                                             <input type="text" id="umur_anak_laki_laki" name="umur_anak_laki_laki"
-                                                value="{{ isset($data) ? $data->umur_anak_laki_laki : '0' }}"
+                                                value="{{ isset($data) ? $data->umur_anak_laki_laki : old('umur_anak_laki_laki') }}"
                                                 class="form-control">
                                             <label class="form-label">Umur Anak Laki Laki</label>
                                         </div>
@@ -344,9 +344,9 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('jml_anak_perempuan') error @enderror">
                                             <input type="number" id="jml_anak_perempuan" name="jml_anak_perempuan"
-                                                value="{{ isset($data) ? $data->jml_anak_perempuan : '0' }}"
+                                                value="{{ isset($data) ? $data->jml_anak_perempuan : old('jml_anak_perempuan') }}"
                                                 class="form-control">
                                             <label class="form-label">Anak Perempuan</label>
                                         </div>
@@ -354,9 +354,9 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('umur_anak_perempuan') error @enderror">
                                             <input type="text" id="umur_anak_perempuan" name="umur_anak_perempuan"
-                                                value="{{ isset($data) ? $data->umur_anak_perempuan : '0' }}"
+                                                value="{{ isset($data) ? $data->umur_anak_perempuan : old('umur_anak_perempuan') }}"
                                                 class="form-control">
                                             <label class="form-label">Umur Anak Perempuan</label>
                                         </div>
@@ -368,7 +368,7 @@
                                 </div>
                                 <div class="col-sm-10">
                                     <div class="form-group form-float">
-                                        <div class="form-line">
+                                        <div class="form-line @error('family_in_taiwan') error @enderror">
                                             <input type="checkbox" name="family_in_taiwan" id="family_in_taiwan"
                                                 class="filled-in chk-col-yellow"
                                                 {{ isset($data) && $data->family_in_taiwan == '1' ? 'checked' : '' }}>

@@ -35,11 +35,20 @@
                     <span>Biodata</span>
                 </a>
             </li>
-            <li {!!url()->current() == route('pmi.index') || str_contains(url()->current(),'pmi') ? 'class="active"' : ''!!}>
-                <a href="{{route('pmi.index')}}">
+            <li {!!url()->current() == route('pmi.index') || str_contains(url()->current(),'pmi') || url()->current() == route('category_files.index') || str_contains(url()->current(),'category_files') ? 'class="active"' : ''!!}>
+                <a href="#" class="menu-toggle">
                     <i class="material-icons">contact_page</i>
                     <span>PMI</span>
                 </a>
+                <ul class="ml-menu">
+                    <li {!! url()->current() == route('category_files.index') || str_contains(url()->current(),'category_files') ? 'class="active"' : ''!!}>
+                        <a href="{{route('category_files.index')}}">Kategori File</a>
+                    </li>
+                    <li {!!url()->current() == route('pmi.index') || str_contains(url()->current(),'pmi') ? 'class="active"' : ''!!}>
+                        <a href="{{route('pmi.index')}}">PMI</a>
+                    </li>
+                  
+                </ul>
             </li>
             <li {!!url()->current() == route('keuangan.index') || str_contains(url()->current(),'keuangan') ? 'class="active"' : ''!!}>
                 <a href="{{route('keuangan.index')}}">

@@ -2,20 +2,23 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h1>PMI</h1>
-            <small>Data PMI yang sudah di input akan muncul disini !</small>
+            <h1>Kategori File</h1>
+            <small>Data Kategori File PMI yang sudah di input akan muncul disini !</small>
         </div>
 
         <div class="row clearfix">
             <div class="col-md-12">
              <div class="card">
                  <div class="header row">
-                     <div class="col-md-12">
+                     <div class="col-md-10">
                          <h2>
-                             Data PMI
-                             <small>Data PMI saat ini</small>
+                             Data Kategori File
+                             <small>Data Kategori File saat ini</small>
                          </h2>
                      </div>
+                     <div class="col-md-2">
+                        <a href="{{route('category_files.create')}}" class="btn btn-primary btn-block" name="tambah" id="tambah" >Tambah</a>
+                    </div>         
                                    
                  </div>
                  <div class="body">
@@ -23,16 +26,11 @@
                          <table class="table" id="tbl_list">
                              <thead>
                                  <th>No</th>
-                                 <th>Kode</th>
-                                 <th>Foto</th>
-                                 <th>Nama</th>
-                                 <th>Tempat Lahir</th>
-                                 <th>Tanggal Lahir</th>
-                                 <th>L/P</th>
-                                 <th>Berkas</th>
+                                 <th>Kategori</th>
+                                 <th>Status</th>
                                  <th>Aksi</th>
                              </thead>
-                             <tbody></tbody>
+                            
                          </table>
                      </div>
                  </div>
@@ -45,11 +43,11 @@
 @section('content-js')
 <script type="text/javascript">
     $(document).ready(function() {
-       
+      
         $('#tbl_list').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{{ route('biodata.list') }}',
+            ajax: '{{ route('kategori_file.list') }}',
             columns: [{
                     data: "id",
                     name: 'id',
@@ -58,41 +56,17 @@
                     }
                 },
                 {
-                    data: 'kode_biodata',
-                    name: 'kode_biodata'
+                    data: 'category_files',
+                    name: 'category_files'
                 },
                 {
-                    data: 'foto',
-                    name: 'foto',
+                    data: 'category_status',
+                    name: 'category_status',
                     render: function(data, type, row, meta) {
-                        let dates = '{!!asset("assets/images/user.png")!!}';
-                        if(data != '-'){
-                            dates = '{!!asset("uploads/'+data+'")!!}';
+                        if(data === '1'){
+                           return '<span class="badge bg-green">Active</span>';
                         }
-                        return '<img src="'+dates+'" width="50" height="50" class="img img-circle" alt="User"  />';
-                    }
-                },
-                {
-                    data: 'nama',
-                    name: 'nama'
-                },
-                {
-                    data: 'tempat_lahir',
-                    name: 'tempat_lahir'
-                },
-                {
-                    data: 'tgl_lahir',
-                    name: 'tgl_lahir'
-                },
-                {
-                    data: 'jenis_kelamin',
-                    name: 'kode_biodata'
-                },
-                {
-                    data: 'id',
-                    name: 'id',
-                    render:function(data,type,row,meta){
-                        return "Berkas akan muncul disini";
+                        return '<span class="badge bg-danger">Non Active</span>';
                     }
                 },
                 {

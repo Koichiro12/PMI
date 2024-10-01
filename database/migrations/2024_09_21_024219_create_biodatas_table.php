@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('tempat_lahir');
             $table->date('tgl_lahir');
             $table->string('jenis_kelamin');
+            $table->text('asal')->nullable();
             $table->integer('umur')->default(0);
             $table->integer('tb')->default(0);
             $table->integer('bb')->default(0);

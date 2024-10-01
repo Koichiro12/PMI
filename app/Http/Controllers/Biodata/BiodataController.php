@@ -99,7 +99,7 @@ class BiodataController extends Controller
             }
             return redirect()->route('biodata.index')->with('success',"Input Data Berhasil");
         }
-        return redirect()->back()->with('error','Update Data Gagal, Silahkan coba lagi beberapa saat lagi !');
+        return redirect()->back()->with('error','Input Data Gagal, Silahkan coba lagi beberapa saat lagi !');
     }
 
     /**
@@ -195,6 +195,14 @@ class BiodataController extends Controller
     public function destroy(string $id)
     {
         //
+        $oldData = Biodata::findOrFail($id);
+        if($oldData->foto != '-' && $oldData->foto != null){
+            unlink($this->defaultUploadsDirectory.'/'.$oldData->foto);
+        }
+        BiodataExperience::where('biodata_id','=',$id)->delete();
+        BiodataFamilyOverseas::where('biodata_id','=',$id)->delete();
+        $oldData->delete();
+        return redirect()->back()->with('success','Hapus Data Berhasil');
     }
 
     public function printPdf(string $id){
