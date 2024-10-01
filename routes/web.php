@@ -44,10 +44,11 @@ Route::group(['middleware'=>['prevent-back','auth']],function(){
 
 
     Route::get('/PMI',[PMIController::class,'index'])->name('pmi.index');
-    
+    Route::get('/PMI/list',[PMIController::class,'list'])->name('pmi.list');
     
     //Keuangan
     Route::get('/Keuangan',[KeuanganController::class,'index'])->name('keuangan.index');
+    Route::get('/Keuangan/list',[KeuanganController::class,'list'])->name('keuangan.list');
 
     
     Route::resource('category_payment',KategoriPembayaranController::class);

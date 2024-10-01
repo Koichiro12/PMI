@@ -58,7 +58,7 @@
         $('#tbl_list').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{{ route('biodata.list') }}',
+            ajax: '{{ route('pmi.list') }}',
             columns: [{
                     data: "id",
                     name: 'id',
@@ -95,7 +95,7 @@
                 },
                 {
                     data: 'jenis_kelamin',
-                    name: 'kode_biodata'
+                    name: 'jenis_kelamin'
                 },
                 {
                     data: 'id',
