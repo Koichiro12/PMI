@@ -98,18 +98,15 @@
                     name: 'jenis_kelamin'
                 },
                 {
-                    data: 'id',
-                    name: 'id',
-                    render:function(data,type,row,meta){
-                        return "Berkas akan muncul disini";
-                    }
+                    data: 'berkas',
+                    name: 'berkas',
                 },
                 {
                     data: "id",
                     name: "id",
                     render: function(data, type, row, meta) {
                         let id = data;
-                        return '<form action="{!! url()->current() . "/'+id+'" !!}" method="POST" enctype="multipart/form-data"> @csrf @method('DELETE')<a href="{!! url()->current() . "/'+id+'/edit" !!}" class="btn btn-warning btn-block m-2" name="edit" id="edit" >edit</a><button type="submit" onclick="confirmDelete(event,this)" class="btn btn-danger btn-block m-2">hapus</button></form>';
+                        return '<a href="{!! url()->current() . "/'+id+'/edit" !!}" class="btn btn-warning btn-block m-2" name="edit" id="edit" >edit</a>';
                     }
                 },
             ]

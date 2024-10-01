@@ -22,4 +22,7 @@ class PMI extends Model
         'pk_number',
     ];
 
+    public function Biodata(){
+        return $this->belongsTo(Biodata::class);
+    }
 }

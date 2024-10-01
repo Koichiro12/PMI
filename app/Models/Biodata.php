@@ -53,4 +53,7 @@ class Biodata extends AppModel
     public function BiodataFamilyOverseas(){
         return $this->hasMany(BiodataFamilyOverseas::class);
     }
+    public function PMI(){
+        return $this->hasOne(PMI::class);
+    }
 }
