@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Biodata\BiodataController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\ProfileController;
+use App\Http\Controllers\Keuangan\KategoriPembayaranController;
 use App\Http\Controllers\Keuangan\KeuanganController;
 use App\Http\Controllers\PMI\KategoriFileController;
 use App\Http\Controllers\PMI\PMIController;
@@ -47,7 +48,10 @@ Route::group(['middleware'=>['prevent-back','auth']],function(){
     
     //Keuangan
     Route::get('/Keuangan',[KeuanganController::class,'index'])->name('keuangan.index');
+
     
+    Route::resource('category_payment',KategoriPembayaranController::class);
+    Route::get('kategori_pembayaran/list',[KategoriPembayaranController::class,'list'])->name('category_payment.list');
     
     //Pengguna
     Route::get('pengguna/list',[UsersController::class,'list'])->name('pengguna.list');
