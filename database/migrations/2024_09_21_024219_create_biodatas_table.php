@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode_biodata');
             $table->text('foto');
-            $table->string('nik')->default('');
+            $table->string('nik')->nullable();
             $table->string('nama');
             $table->string('tempat_lahir');
             $table->date('tgl_lahir');
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('kewarganegaraan')->default('WNI');
             $table->string('pendidikan')->default('-');
             $table->string('bahasa')->default('Indonesia');
-            $table->string('status_pernikahan');
+            $table->string('status_pernikahan')->nullable();
             $table->integer('status_ayah')->default(0);
             $table->integer('umur_ayah')->default(0);
             $table->integer('status_ibu')->default(0);
@@ -43,9 +43,9 @@ return new class extends Migration
             $table->string('karir_suami')->default('-');
             $table->integer('jml_anak')->default(0);
             $table->integer('jml_anak_laki_laki')->default(0);
-            $table->string('umur_anak_laki_laki')->default('');
+            $table->string('umur_anak_laki_laki')->nullable();
             $table->integer('jml_anak_perempuan')->default(0);
-            $table->string('umur_anak_perempuan')->default('');
+            $table->string('umur_anak_perempuan')->nullable();
             $table->string('family_in_taiwan')->default(0);
             $table->timestamps();
         });

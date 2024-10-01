@@ -5,7 +5,16 @@
             <h1>Biodata</h1>
             <small>Data Biodata yang sudah di input akan muncul disini !</small>
         </div>
-
+        @if (session()->has('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if (session()->has('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
         <div class="row clearfix">
            <div class="col-md-12">
             <div class="card">
