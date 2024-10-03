@@ -5,7 +5,16 @@
             <h1>Set Biaya</h1>
             <small>Set biaya dengan mengisi form di bawah ini !</small>
         </div>
-
+        @if (session()->has('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if (session()->has('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
         <div class="row clearfix">
             <div class="col-md-12">
                 <div class="card">
@@ -60,7 +69,7 @@
                                                 <div class="col-sm-12">
                                                     <div class="form-group form-float">
                                                         <div class="form-line">
-                                                            <textarea name="category_note_{{$item->id}}" id="category_note_{{$item->id}}" class="form-control" cols="30" rows="2" placeholder="Note {{$item->payment_category}}"></textarea>
+                                                            <textarea name="category_note_{{$item->id}}" id="category_note_{{$item->id}}" class="form-control" cols="30" rows="2" placeholder="Note {{$item->payment_category}}">{{$note}}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>

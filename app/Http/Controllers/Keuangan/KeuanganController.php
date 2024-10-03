@@ -32,10 +32,36 @@ class KeuanganController extends Controller
     }
     public function setBiaya(Request $request,string $id){
         $paymentCategory = PaymentCategory::latest()->get();
+        $paymentAmount = PaymentAmount::where('biodata_id','=',$id)->latest()->get();
+        foreach($paymentCategory as $pc){
+            if(isset($request['category_amount_'.$pc->id])){
+                $isAvailable = false;
+                foreach($paymentAmount as $pa){
+                    if($pa->payment_categories_id == $pc->id){
+                        $isAvailable = true;
+                        $pa->update([
+                            'amount' => $request['category_amount_'.$pc->id],
+                            'note' => isset($request['category_note_'.$pc->id]) && $request['category_note_'.$pc->id] != null ? $request['category_note_'.$pc->id] : '-' ,
+                        ]);
+                    }
+                }
+                if(!$isAvailable){
+                    PaymentAmount::insert([
+                        'biodata_id' => $id,
+                        'payment_categories_id' => $pc->id,
+                        'amount' => $request['category_amount_'.$pc->id],
+                        'note' => isset($request['category_note_'.$pc->id]) && $request['category_note_'.$pc->id] != null ? $request['category_note_'.$pc->id] : '-' ,
+                    ]);
+                }
+            }
+            
+        }
+        return redirect()->back()->with('success',"Update Data Berhasil");
+        
     }
 
     public function detail(Request $request,string $id){
-
+        return view('keuangan.detail');
     }
 
 }
