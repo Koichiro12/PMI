@@ -2,8 +2,8 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h1>Biodata</h1>
-            <small>Data Biodata yang sudah di input akan muncul disini !</small>
+            <h1>Pembayaran</h1>
+            <small>Data Pembayaran yang sudah di input akan muncul disini !</small>
         </div>
 
         <div class="row clearfix">
@@ -12,8 +12,8 @@
                     <div class="header row">
                         <div class="col-md-12">
                             <h2>
-                                Data Keuangan
-                                <small>Data Keuangan saat ini</small>
+                                Data Pembayaran
+                                <small>Data Pembayaran saat ini</small>
                             </h2>
                         </div>
 
@@ -91,7 +91,7 @@
                         name: "id",
                         render: function(data, type, row, meta) {
                             let id = data;
-                            return '<a href="{!! url()->current() . "/'+id+'/setBiaya" !!}" class="btn btn-success btn-block m-2" name="set_biaya" id="set_biaya" >Biaya </a>';
+                            return '<a href="{!! url()->current() . "/'+id+'/Biaya" !!}" class="btn btn-success btn-block m-2" name="set_biaya" id="set_biaya" >Biaya </a>';
                         }
                     },
                     {

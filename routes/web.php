@@ -53,9 +53,10 @@ Route::group(['middleware'=>['prevent-back','auth']],function(){
     //Keuangan
     Route::get('/Keuangan',[KeuanganController::class,'index'])->name('keuangan.index');
     Route::get('/Keuangan/list',[KeuanganController::class,'list'])->name('keuangan.list');
-    Route::get('/Keuangan/{id}/setBiaya',[KeuanganController::class,'setBiaya'])->name('keuangan.setbiaya');
-    Route::get('/Keuangan/{id}/detail',[KeuanganController::class,'detail'])->name('keuangan.detail');
+    Route::get('/Keuangan/{id}/Biaya',[KeuanganController::class,'Biaya'])->name('keuangan.biaya');
+    Route::post('/Keuangan/{id}/Biaya',[KeuanganController::class,'setBiaya'])->name('keuangan.setbiaya');
     
+    Route::get('/Keuangan/{id}/detail',[KeuanganController::class,'detail'])->name('keuangan.detail');
 
     Route::resource('category_payment',KategoriPembayaranController::class);
     Route::get('kategori_pembayaran/list',[KategoriPembayaranController::class,'list'])->name('category_payment.list');
