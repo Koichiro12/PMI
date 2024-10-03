@@ -49,6 +49,12 @@ class BiodataController extends Controller
             'nama' => ['required'],
             'tempat_lahir' => ['required'],
             'tgl_lahir' => ['required'],
+            'umur' => ['required'],
+            'tb' => ['required'],
+            'bb' => ['required'],
+            'kewarganegaraan' => ['required'],
+            'pendidikan' => ['required'],
+            'bahasa' => ['required'],
         ]);
         if($validate->fails()){
             return redirect()->back()->withErrors($validate)->withInput();
@@ -132,10 +138,17 @@ class BiodataController extends Controller
             'nama' => ['required'],
             'tempat_lahir' => ['required'],
             'tgl_lahir' => ['required'],
+            'umur' => ['required'],
+            'tb' => ['required'],
+            'bb' => ['required'],
+            'kewarganegaraan' => ['required'],
+            'pendidikan' => ['required'],
+            'bahasa' => ['required'],
         ]);
         if($validate->fails()){
             return redirect()->back()->withErrors($validate)->withInput();
         }
+      
         $request['status_ayah'] = $request->status_ayah != null ? 1 : 0;
         $request['status_ibu'] = $request->status_ibu != null ? 1 : 0;
         $request['family_in_taiwan'] = $request->family_in_taiwan != null ? 1 : 0;
@@ -148,8 +161,12 @@ class BiodataController extends Controller
         }
         $update = Biodata::updateData($id,$request,['foto-biodata','fit_name','fit_relation','fit_location','domestic_masa_kerja','domestic_wilayah_kerja','domestic_desc_kerja','overseas_masa_kerja','overseas_wilayah_kerja','overseas_desc_kerja']);
         if($update){
+            BiodataFamilyOverseas::where('biodata_id','=',$id)->delete();
+            BiodataExperience::where([['biodata_id','=',$id],['type_pekerjaan','=','domestic']])->delete();
+            BiodataExperience::where([['biodata_id','=',$id],['type_pekerjaan','=','overseas']])->delete();
+            
             if(isset($request->fit_name) && is_array($request->fit_name)){
-                BiodataFamilyOverseas::where('biodata_id','=',$id)->delete();
+               
                 for($val = 0; $val < count($request->fit_name);$val++){
                     BiodataFamilyOverseas::insert([
                         'biodata_id' => $id,
@@ -160,7 +177,7 @@ class BiodataController extends Controller
                 }
             }
             if(isset($request->domestic_masa_kerja) && is_array($request->domestic_masa_kerja)){
-                BiodataExperience::where([['biodata_id','=',$id],['type_pekerjaan','=','domestic']])->delete();
+               
                 for($val = 0; $val < count($request->domestic_masa_kerja);$val++){
                     BiodataExperience::insert([
                         'biodata_id' => $id,
@@ -172,7 +189,7 @@ class BiodataController extends Controller
                 }
             }
             if(isset($request->overseas_masa_kerja) && is_array($request->overseas_masa_kerja)){
-                BiodataExperience::where([['biodata_id','=',$id],['type_pekerjaan','=','overseas']])->delete();
+               
                 for($val = 0; $val < count($request->overseas_masa_kerja);$val++){
                     BiodataExperience::insert([
                         'biodata_id' => $id,
@@ -196,7 +213,7 @@ class BiodataController extends Controller
     {
         //
         $oldData = Biodata::findOrFail($id);
-        if($oldData->foto != '-' && $oldData->foto != null){
+        if($oldData->foto != '-' && $oldData->foto != null && file_exists($this->defaultUploadsDirectory.'/'.$oldData->foto)){
             unlink($this->defaultUploadsDirectory.'/'.$oldData->foto);
         }
         BiodataExperience::where('biodata_id','=',$id)->delete();
