@@ -5,6 +5,8 @@ namespace App\Http\Controllers\PMI;
 use App\Http\Controllers\Controller;
 use App\Models\Biodata;
 use App\Models\FileCategory;
+use App\Models\PMI;
+use App\Models\PMIFiles;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -21,6 +23,8 @@ class PMIController extends Controller
             return DataTables::of($biodata)
             ->addColumn('berkas',function($biodata){
                 $categoryBerkas = FileCategory::where('category_status','=','1')->latest()->get();
+                $pmi = PMI::where('biodata_id','=',$biodata->id)->first();
+                $pmiFiles = PMIFiles::where('pmi_id','=',$pmi->id)->latest()->get();
                 $no = 1;
                 $result = '';
                 $result .= ' <div class="modal fade" id="modalBerkas-'.$biodata->id.'" tabindex="-1" role="dialog">
@@ -42,11 +46,19 @@ class PMIController extends Controller
                             
                           ';
                     foreach($categoryBerkas as $cb){
+                        $defaultResult = ' <span class="badge bg-danger">File Belum Diupload</span>';
+                        if(isset($pmiFiles)){
+                            foreach($pmiFiles as $pf){
+                                if($pf->file_categories_id == $cb->id){
+                                    $defaultResult = '<a href="'.asset('uploads/'.$pf->file).'" class="btn btn-info btn-block m-2" name="berkas" id="berkas" target="_blank">Download</a>';
+                                }
+                            }
+                        }
                         $result .= '<tr>
                             <td>'.$no.'</td>
-                            <td>'.$cb->category_files.'</td>
-                            <td><a href="#" class="btn btn-info btn-block m-2" name="berkas" id="berkas" >Download</a></td>
-                        </tr>';
+                            <td>'.$cb->category_files.'</td><td>';
+                        $result .= $defaultResult;
+                        $result .='</tr></td>';
                         $no++;
                     }
                 $result .= '</tbody></table></div>
@@ -66,10 +78,10 @@ class PMIController extends Controller
         }
     }
     public function edit(string $id){
-        
-    }
-    public function store(Request $request){
-        
+        $biodata = Biodata::findOrFail($id);
+        $pmi = PMI::where('biodata_id','=',$id)->first();
+        $category_files = FileCategory::where('category_status','=','1')->latest()->get();
+        return view('PMI.form',compact(['id','category_files','pmi','biodata']));
     }
     public function update(Request $request, string $id){
         

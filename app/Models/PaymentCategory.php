@@ -15,4 +15,8 @@ class PaymentCategory extends AppModel
         'payment_category_status',
     ];
 
+    public function PMIFiles(){
+        return $this->hasMany(PMIFiles::class);
+    }
+
 }

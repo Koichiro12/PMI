@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger(column: 'file_categories_id');
             $table->text('file');
             $table->timestamps();
+            
             $table->foreign(columns: 'file_categories_id')->references('id')->on('file_categories')->onDelete('cascade');
             $table->foreign('pmi_id')->references('id')->on('pmi')->onDelete('cascade');
         });

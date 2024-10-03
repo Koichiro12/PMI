@@ -25,4 +25,10 @@ class PMI extends Model
     public function Biodata(){
         return $this->belongsTo(Biodata::class);
     }
+
+    public function PMIFiles(){
+        return $this->hasMany(PMIFiles::class,'pmi_id');
+    }
+    
+
 }

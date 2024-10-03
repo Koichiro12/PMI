@@ -14,4 +14,13 @@ class PMIFiles extends Model
         'file_categories_id',
         'file',
     ];
+
+
+    public function PMI(){
+        return $this->belongsTo(PMI::class);
+    }
+    public function FileCategory(){
+        return $this->belongsTo(FileCategory::class);
+    }
+
 }
