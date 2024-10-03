@@ -85,8 +85,8 @@
                         </div>
                     </div>
                     <div class="body">
-                        <form action="{{ route('pmi.update', $id) }}" method="POST">
-                            @method('PUT')
+                        <form action="{{ route('pmi.update', $id) }}" method="POST" enctype="multipart/form-data">
+                            @method('POST')
                             @csrf
                             <div class="row clearfix">
                                 <div class="col-md-12">

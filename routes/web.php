@@ -47,6 +47,8 @@ Route::group(['middleware'=>['prevent-back','auth']],function(){
     Route::get('PMI/{id}/edit',[PMIController::class,'edit'])->name('pmi.edit');
     Route::post('PMI/{id}/update',[PMIController::class,'update'])->name('pmi.update');
     Route::get('/PMI/list',[PMIController::class,'list'])->name('pmi.list');
+
+    Route::get('/PMIFiles/{id}/destroy',[PMIController::class,'deleteFile'])->name('pmi_files.delete');
     
     //Keuangan
     Route::get('/Keuangan',[KeuanganController::class,'index'])->name('keuangan.index');
