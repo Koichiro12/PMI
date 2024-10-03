@@ -14,4 +14,7 @@ class FileCategory extends AppModel
         'category_files',
         'category_status'
     ];
+    public function PMIFiles(){
+        return $this->hasMany(PMIFiles::class);
+    }
 }

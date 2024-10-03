@@ -20,5 +20,12 @@ class KeuanganController extends Controller
             return DataTables::of($users)->make();
         }
     }
+    public function setBiaya(Request $request,string $id){
+        return view('keuangan.biaya');
+    }
+
+    public function detail(Request $request,string $id){
+
+    }
 
 }

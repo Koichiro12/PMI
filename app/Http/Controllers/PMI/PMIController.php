@@ -24,7 +24,7 @@ class PMIController extends Controller
             ->addColumn('berkas',function($biodata){
                 $categoryBerkas = FileCategory::where('category_status','=','1')->latest()->get();
                 $pmi = PMI::where('biodata_id','=',$biodata->id)->first();
-                $pmiFiles = PMIFiles::where('pmi_id','=',$pmi->id)->latest()->get();
+                $pmiFiles = $pmi != null ?  PMIFiles::where('pmi_id','=',$pmi->id)->latest()->get() : null;
                 $no = 1;
                 $result = '';
                 $result .= ' <div class="modal fade" id="modalBerkas-'.$biodata->id.'" tabindex="-1" role="dialog">

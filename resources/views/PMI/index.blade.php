@@ -106,7 +106,7 @@
                     name: "id",
                     render: function(data, type, row, meta) {
                         let id = data;
-                        return '<a href="{!! url()->current() . "/'+id+'/edit" !!}" class="btn btn-warning btn-block m-2" name="edit" id="edit" >edit</a>';
+                        return '<a href="{!! url()->current() . "/'+data+'/edit" !!}" class="btn btn-warning btn-block m-2" name="edit" id="edit" >edit</a>';
                     }
                 },
             ]

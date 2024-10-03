@@ -50,7 +50,7 @@
                   
                 </ul>
             </li>
-            <li {!!url()->current() == route('keuangan.index') || str_contains(url()->current(),'keuangan') || url()->current() == route('category_payment.index') || str_contains(url()->current(),'category_payment') ? 'class="active"' : ''!!}>
+            <li {!!url()->current() == route('keuangan.index') || str_contains(url()->current(),'Keuangan') || url()->current() == route('category_payment.index') || str_contains(url()->current(),'category_payment') ? 'class="active"' : ''!!}>
                 <a href="#" class="menu-toggle">
                     <i class="material-icons">payments</i>
                     <span>Keuangan</span>
@@ -59,7 +59,7 @@
                     <li {!! url()->current() == route('category_payment.index') || str_contains(url()->current(),'category_payment') ? 'class="active"' : ''!!}>
                         <a href="{{route('category_payment.index')}}">Kategori Pembayaran</a>
                     </li>
-                    <li {!!url()->current() == route('keuangan.index') || str_contains(url()->current(),'keuangan') ? 'class="active"' : ''!!}>
+                    <li {!!url()->current() == route('keuangan.index') || str_contains(url()->current(),'Keuangan') ? 'class="active"' : ''!!}>
                         <a href="{{route('keuangan.index')}}">Pembayaran</a>
                     </li>
                   
