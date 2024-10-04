@@ -31,7 +31,7 @@
                         </div>
                     </div>
                     <div class="body">
-                        <form action="{{ isset($data) ? route('biodata.update', $data->id) : route('biodata.store') }}" method="POST">
+                        <form action="{{ isset($data) ? route('biodata.update', $data->id) : route('biodata.store') }}" method="POST" enctype="multipart/form-data">
                             @method(isset($data) ? 'PUT' : 'POST')
                             @csrf
                             <div class="row clearfix">

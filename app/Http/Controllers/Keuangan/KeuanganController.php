@@ -32,7 +32,7 @@ class KeuanganController extends Controller
     }
     public function setBiaya(Request $request,string $id){
         $paymentCategory = PaymentCategory::latest()->get();
-        $paymentAmount = PaymentAmount::where('biodata_id','=',$id)->latest()->get();
+        $paymentAmount = PaymentAmount::lockForUpdate()->where('biodata_id','=',$id)->latest()->get();
         foreach($paymentCategory as $pc){
             if(isset($request['category_amount_'.$pc->id])){
                 $isAvailable = false;
@@ -61,7 +61,9 @@ class KeuanganController extends Controller
     }
 
     public function detail(Request $request,string $id){
-        return view('keuangan.detail');
+        $biodata = Biodata::findOrFail($id);
+        $paymentCategory = PaymentCategory::where('payment_category_status','=','1')->latest()->get();
+        return view('keuangan.detail',compact(['biodata','paymentCategory','id']));
     }
 
 }

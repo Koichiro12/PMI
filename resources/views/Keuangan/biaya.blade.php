@@ -19,11 +19,14 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header row">
-                        <div class="col-md-12">
+                        <div class="col-md-10">
                             <h2>
                                 Set Biaya
                                 <small>Form biaya ada di bawah ini !</small>
                             </h2>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{{route('keuangan.index')}}" class="btn btn-sm btn-danger btn-block">Data Keuangan</a>
                         </div>
 
                     </div>
