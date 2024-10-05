@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Keuangan;
 
 use App\Http\Controllers\Controller;
 use App\Models\Biodata;
+use App\Models\Payment;
 use App\Models\PaymentAmount;
 use App\Models\PaymentCategory;
 use Illuminate\Http\Request;
@@ -66,4 +67,47 @@ class KeuanganController extends Controller
         return view('keuangan.detail',compact(['biodata','paymentCategory','id']));
     }
 
+    public function PaymentList(Request $request,string $id = null){
+        if($request->ajax()){
+            $payment = Payment::where('biodata_id','=',$id)->latest()->get();
+            return DataTables::of($payment)
+            ->addColumn('tanggal',function($p){
+                return date_format(date_create($p->created_at),'d M Y h:i:s');
+            })
+            ->addColumn('biaya',function($p){
+                return $p->PaymentCategory->payment_category; 
+            })
+            ->addColumn('bayar',function($p){
+                return 'Rp.'.number_format($p->payment).',-'; 
+            })
+            ->addColumn('note_or_bukti',function($p){
+                $result = '';
+                $result .= $p->bukti != null && $p->bukti != "-" ? '<a href="'.asset('uploads/'.$p->bukti).'" class="btn btn-sm btn-block btn-primary" target="_blank">Lihat Bukti </a>' : '<span class="badge bg-red">Tidak Tersedia</span>';
+                $result .= '<hr>';
+                $result .= '<b>*Note</b><br>';
+                $result .= $p->note ;
+                return $result;
+            })
+            ->addColumn('status',function($p){
+                $result = '';
+                switch($p->payment_status){
+                    case '0':
+                        $result = '<span class="badge bg-yellow">Pending</span>';
+                        break;
+                    case '1':
+                        $result = '<span class="badge bg-green">Sukses</span>';
+                        break;
+                    case '2':
+                        $result = '<span class="badge bg-red">Gagal / Cancel</span>';
+                        break;
+                }
+                return $result;
+            })
+            ->addColumn('aksi',function($p){
+                
+            })
+            ->rawColumns(['note_or_bukti','status','aksi'])
+            ->make();
+        }
+    }
 }

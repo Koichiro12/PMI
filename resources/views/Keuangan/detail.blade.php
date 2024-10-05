@@ -98,8 +98,9 @@
                             <thead>
                                 <th width="10%">No</th>
                                 <th>Biaya</th>
-                                <th>Total</th>
+                                <th>Total Bayar</th>
                                 <th>Terbayar</th>
+                                <th>Kurang</th>
                             </thead>
                             <tbody>
                                @foreach ($paymentCategory as $item)
@@ -111,12 +112,18 @@
                                                     $biaya = $pa->amount;
                                                 }
                                             }
+                                            foreach($biodata->Payment as $p){
+                                                if($p->payment_categories_id == $item->id){
+                                                    $terbayar += $p->payment;
+                                                }
+                                            }
                                         @endphp
                                    <tr>
                                     <td>{{$loop->index + 1}}</td>
                                     <td>{{$item->payment_category}}</td>
                                     <td>Rp.{{number_format($biaya)}},-</td>
                                     <td>Rp.{{number_format($terbayar)}},-</td>
+                                    <td>Rp.{{number_format($terbayar - $biaya)}},-</td>
                                    </tr>
                                @endforeach
                                
@@ -140,7 +147,21 @@
                         </div>
                     </div>
                     <div class="body">
-                      
+                      <div class="table-responsive">
+                        <table class="table" id="tbl_list">
+                            <thead>
+                                <th>No</th>
+                                <th>Tanggal</th>
+                                <th>Type Bayar</th>
+                                <th>Biaya</th>
+                                <th>Total Bayar</th>
+                                <th>Note / Bukti</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </thead>
+                            
+                        </table>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -148,4 +169,54 @@
 
     </div>
 @endsection
-
+@section('content-js')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#tbl_list').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{{ route('keuangan_detail.payment',$id) }}',
+                columns: [{
+                        data: "id",
+                        name: 'id',
+                        render: function(data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
+                    },
+                    {
+                        data : 'tanggal',
+                        name : 'tanggal'
+                    },
+                    {
+                        data : 'type_payment',
+                        name : 'type_payment'
+                    },
+                    {
+                        data : 'biaya',
+                        name : 'biaya'
+                    },
+                    {
+                        data : 'bayar',
+                        name : 'bayar'
+                    },
+                    {
+                        data : 'note_or_bukti',
+                        name : 'note_or_bukti'
+                    },
+                    {
+                        data : 'status',
+                        name : 'status'
+                    },
+                    {
+                        data: "id",
+                        name: "id",
+                        render: function(data, type, row, meta) {
+                            let id = data;
+                            return '<a href="{!! url()->current() !!}" class="btn btn-primary btn-block m-2" name="print_pdf" id="print_pdf" >Detail </a>';
+                        }
+                    },
+                ]
+            });
+        });
+    </script>
+@endsection

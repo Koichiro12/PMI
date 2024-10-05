@@ -18,5 +18,8 @@ class PaymentCategory extends AppModel
     public function PaymentAmount(){
         return $this->hasMany(PaymentAmount::class);
     }
+    public function Payment(){
+        return $this->hasMany(Payment::class);
+    }
 
 }

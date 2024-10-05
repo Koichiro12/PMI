@@ -56,6 +56,10 @@ class Biodata extends AppModel
     public function PMI(){
         return $this->hasOne(PMI::class);
     }
+ 
+    public function Payment(){
+        return $this->hasMany(Payment::class);
+    }
 
     public function PaymentAmount(){
         return $this->hasMany(PaymentAmount::class);

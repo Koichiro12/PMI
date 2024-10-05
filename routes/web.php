@@ -57,7 +57,7 @@ Route::group(['middleware'=>['prevent-back','auth']],function(){
     Route::post('/Keuangan/{id}/Biaya',[KeuanganController::class,'setBiaya'])->name('keuangan.setbiaya');
     
     Route::get('/Keuangan/{id}/detail',[KeuanganController::class,'detail'])->name('keuangan.detail');
-
+    Route::get('/Keuangan/{id}/detail/payment',[KeuanganController::class,'PaymentList'])->name('keuangan_detail.payment');
     Route::resource('category_payment',KategoriPembayaranController::class);
     Route::get('kategori_pembayaran/list',[KategoriPembayaranController::class,'list'])->name('category_payment.list');
     
