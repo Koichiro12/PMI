@@ -17,9 +17,9 @@ class PaymentAmount extends AppModel
     ];
 
     public function Biodata(){
-        return $this->belongsTo(Biodata::class);
+        return $this->belongsTo(Biodata::class,'biodata_id');
     }
     public function PaymentCategory(){
-        return $this->belongsTo(PaymentCategory::class);
+        return $this->belongsTo(PaymentCategory::class,'payment_categories_id');
     }
 }

@@ -27,7 +27,7 @@ class PMIController extends Controller
                 $pmiFiles = $pmi != null ?  PMIFiles::where('pmi_id','=',$pmi->id)->latest()->get() : null;
                 $no = 1;
                 $result = '';
-                $result .= ' <div class="modal fade" id="modalBerkas-'.$biodata->id.'" tabindex="-1" role="dialog">
+                $result .= '<div class="modal fade" id="modalBerkas-'.$biodata->id.'" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">

@@ -23,7 +23,7 @@ class PMI extends AppModel
     ];
 
     public function Biodata(){
-        return $this->belongsTo(Biodata::class);
+        return $this->belongsTo(Biodata::class,'biodata_id');
     }
 
     public function PMIFiles(){

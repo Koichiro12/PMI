@@ -58,6 +58,10 @@ Route::group(['middleware'=>['prevent-back','auth']],function(){
     
     Route::get('/Keuangan/{id}/detail',[KeuanganController::class,'detail'])->name('keuangan.detail');
     Route::get('/Keuangan/{id}/detail/payment',[KeuanganController::class,'PaymentList'])->name('keuangan_detail.payment');
+    Route::post('/Keuangan_detail/payment/store',[KeuanganController::class,'StorePayment'])->name('keuangan_detail.store');
+    Route::put('/Keuangan_detail/payment/{id}/update',[KeuanganController::class,'UpdatePayment'])->name('keuangan_detail.update');
+    Route::delete('/Keuangan_detail/payment/{id}/delete',[KeuanganController::class,'DestroyPayment'])->name('keuangan_detail.delete');
+
     Route::resource('category_payment',KategoriPembayaranController::class);
     Route::get('kategori_pembayaran/list',[KategoriPembayaranController::class,'list'])->name('category_payment.list');
     
