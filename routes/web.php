@@ -8,6 +8,7 @@ use App\Http\Controllers\Keuangan\KategoriPembayaranController;
 use App\Http\Controllers\Keuangan\KeuanganController;
 use App\Http\Controllers\PMI\KategoriFileController;
 use App\Http\Controllers\PMI\PMIController;
+use App\Http\Controllers\SelectedInformation\SelectedInformationController;
 use App\Http\Controllers\Users\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -65,6 +66,9 @@ Route::group(['middleware'=>['prevent-back','auth']],function(){
     Route::resource('category_payment',KategoriPembayaranController::class);
     Route::get('kategori_pembayaran/list',[KategoriPembayaranController::class,'list'])->name('category_payment.list');
     
+    Route::resource('selected_information',SelectedInformationController::class);
+    Route::get('SelectedInformation/list',[SelectedInformationController::class,'list'])->name('selected_information.list');
+
     //Pengguna
     Route::get('pengguna/list',[UsersController::class,'list'])->name('pengguna.list');
     Route::resource('pengguna',UsersController::class);

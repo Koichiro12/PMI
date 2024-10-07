@@ -65,6 +65,12 @@
                   
                 </ul>
             </li>
+            <li {!!url()->current() == route('selected_information.index') || str_contains(url()->current(),'selected_information') ? 'class="active"' : ''!!}>
+                <a href="{{route('selected_information.index')}}">
+                    <i class="material-icons">info</i>
+                    <span>Selected Information</span>
+                </a>
+            </li>
             <li class="header">Lainnya</li>
             <li {!!url()->current() == route('pengguna.index') || str_contains(url()->current(),'pengguna') ? 'class="active"' : ''!!}>
                 <a href="{{route('pengguna.index')}}">
