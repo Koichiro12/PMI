@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('biodata_id');
             $table->unsignedBigInteger(column: 'payment_categories_id');
             $table->string('amount')->default(0)->nullable();
-            $table->text('note')->default(0)->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
 
             $table->foreign('biodata_id')->references('id')->on('biodata')->onDelete('cascade');

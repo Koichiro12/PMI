@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('payment')->default(0);
             $table->string('type_payment');
             $table->string('bukti')->nullable();
-            $table->text('note');
-            $table->string('payment_status')->default(0);
+            $table->text('note')->nullable();
+            $table->string('payment_status')->default(1);
             $table->timestamps();
 
             $table->foreign('biodata_id')->references('id')->on('biodata')->onDelete('cascade');

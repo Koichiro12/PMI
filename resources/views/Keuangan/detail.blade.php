@@ -110,7 +110,9 @@
                                             $terbayar = 0;
                                             foreach ($biodata->Payment as $p) {
                                                 if ($p->payment_categories_id == $item->payment_categories_id) {
-                                                    $terbayar += $p->payment;
+                                                    if ($p->payment_status == '1') {
+                                                        $terbayar += $p->payment;
+                                                    }
                                                 }
                                             }
                                         @endphp
@@ -156,7 +158,6 @@
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </thead>
-
                             </table>
                         </div>
                     </div>
@@ -170,11 +171,112 @@
                         <h4 class="modal-title" id="largeModalLabel">Tambah Pembayaran</h4>
                         <small>Tambah pembayaran melalui form di sini !</small>
                     </div>
-                    <form action="{{route('keuangan_detail.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('keuangan_detail.store') }}" method="POST" enctype="multipart/form-data">
                         @method('POST')
                         @csrf
                         <div class="modal-body">
-                            
+                            <input type="hidden" name="biodata_id" id="biodata_id" value="{{ $id }}">
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line @error('payment_categories_id') error focused @enderror"">
+                                            <p>
+                                                Kategori
+                                            </p>
+                                            <select name="payment_categories_id" id="payment_categories_id"
+                                                class="form-control show-tick">
+                                                <option value="">-- Pilih Kategori --</option>
+                                                @foreach ($biodata->PaymentAmount as $item)
+                                                    @php
+                                                        $biaya = 0;
+                                                        $terbayar = 0;
+                                                        foreach ($biodata->Payment as $p) {
+                                                            if (
+                                                                $p->payment_categories_id ==
+                                                                $item->payment_categories_id
+                                                            ) {
+                                                                if ($p->payment_status == '1') {
+                                                                    $terbayar += $p->payment;
+                                                                }
+                                                            }
+                                                        }
+                                                    @endphp
+                                                    <option value="{{ $item->payment_categories_id }}"
+                                                        {{ $terbayar >= $item->amount ? 'disabled' : '' }}>
+                                                        {{ $item->PaymentCategory->payment_category }} (
+                                                        Rp.{{ number_format($item->amount - $terbayar) }} )</option>
+                                                @endforeach
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line @error('type_payment') error focused @enderror"">
+                                            <p>
+                                                Type
+                                            </p>
+                                            <select name="type_payment" id="type_payment" class="form-control show-tick">
+                                                <option value="Cash"
+                                                    {{ old('type_payment') == 'Cash' ? 'selected' : '' }}>Cash</option>
+                                                <option value="Transfer"
+                                                    {{ old('type_payment') == 'Transfer' ? 'selected' : '' }}>Transfer
+                                                </option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line @error('payment') error focused @enderror">
+                                        <input type="number" id="payment" value="{{ old('payment') }}"
+                                            name="payment"class="form-control" required>
+                                        <label class="form-label">Bayar</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line @error('bukti') error focused @enderror">
+                                        <small>
+                                            Bukti Pembayaran <b>* Optional</b>
+                                        </small>
+                                        <input type="file" id="buktis" accept="image/*,image/png,image/jpeg,image/jpg"
+                                            name="buktis"class="form-control">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line @error('note') error focused @enderror">
+                                        <textarea id="note" name="note"class="form-control">{{ old('note') }}</textarea>
+                                        <label class="form-label">Note</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line @error('payment_status') error focused @enderror"">
+                                        <p>
+                                            Status
+                                        </p>
+                                        <select name="payment_status" id="payment_status" class="form-control show-tick">
+                                            <option value="0" {{ old('payment_status') == '0' ? 'selected' : '' }}>
+                                                Pending</option>
+                                            <option value="1" {{ old('payment_status') == '1' ? 'selected' : '' }}>
+                                                Sukses</option>
+                                            <option value="2" {{ old('payment_status') == '2' ? 'selected' : '' }}>
+                                                Gagal / Cancel</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="submit" class="btn btn-link waves-effect">SAVE</button>
