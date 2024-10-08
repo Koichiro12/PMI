@@ -35,6 +35,11 @@
                          <table class="table" id="tbl_list">
                              <thead>
                                  <th>No</th>
+                                 <th>Job Order No</th>
+                                 <th>Nomor Seri</th>
+                                 <th>Nama Inggris</th>
+                                 <th>Nama Tionghoa</th>
+                                 <th>TMA</th>
                                  <th>Aksi</th>
                              </thead>
                             
@@ -61,6 +66,26 @@
                     render: function(data, type, row, meta) {
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
+                },
+                {
+                    data:"id",
+                    name:"id"
+                },
+                {
+                    data:"id",
+                    name:"id"
+                },
+                {
+                    data:"id",
+                    name:"id"
+                },
+                {
+                    data:"id",
+                    name:"id"
+                },
+                {
+                    data:"id",
+                    name:"id"
                 },
                 {
                     data: "id",

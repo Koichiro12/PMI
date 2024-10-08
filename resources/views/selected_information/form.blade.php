@@ -2,8 +2,8 @@
 @section('content')
     <div class="container-fluid d-flex justify-content-between">
         <div class="block-header">
-            <h1> {{ isset($data) ? 'Edit' : 'Tambah' }} Kategori Pembayaran</h1>
-            <small> {{ isset($data) ? 'Edit' : 'Tambah' }} Data Kategori Pembayaran dengan mengisikan form disini !</small>
+            <h1> {{ isset($data) ? 'Edit' : 'Tambah' }} Selected Information</h1>
+            <small> {{ isset($data) ? 'Edit' : 'Tambah' }} Data Selected Information dengan mengisikan form disini !</small>
         </div>
         @if (session()->has('success'))
             <div class="alert alert-success">
@@ -21,22 +21,22 @@
                     <div class="header row">
                         <div class="col-md-10">
                             <h2>
-                                {{ isset($data) ? 'Edit' : 'Tambah' }} Data Kategori Pembayaran
-                                <small>{{ isset($data) ? 'Edit' : 'Tambah' }} Data Kategori Pembayaran pada form dibawah ini !</small>
+                                {{ isset($data) ? 'Edit' : 'Tambah' }} Data Selected Information
+                                <small>{{ isset($data) ? 'Edit' : 'Tambah' }} Data Selected Information pada form dibawah ini !</small>
                             </h2>
                         </div>
                         <div class="col-md-2">
-                            <a href="{{ route('category_payment.index') }}" class="btn btn-danger btn-block" name="tambah"
-                                id="tambah">Data Kategori </a>
+                            <a href="{{ route('selected_information.index') }}" class="btn btn-danger btn-block" name="tambah"
+                                id="tambah">Semua Data</a>
                         </div>
                     </div>
                     <div class="body">
-                        <form action="{{ isset($data) ? route('category_payment.update', $data->id) : route('category_payment.store') }}" method="POST">
+                        <form action="{{ isset($data) ? route('selected_information.update', $data->id) : route('selected_information.store') }}" method="POST">
                             @method(isset($data) ? 'PUT' : 'POST')
                             @csrf
                             <div class="row clearfix">
                                
-                                <div class="col-sm-12">
+                                {{-- <div class="col-sm-12">
                                     <div class="form-group form-float">
                                         <div class="form-line @error('payment_category') focused error @enderror">
                                             <input type="text" id="payment_category" name="payment_category"
@@ -59,7 +59,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-sm-12">
                                     <button type="submit" class="btn btn-primary" id="submit"
                                         class="submit">Simpan</button>

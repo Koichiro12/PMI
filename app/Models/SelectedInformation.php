@@ -11,7 +11,7 @@ class SelectedInformation extends AppModel
     protected $table = 'selected_information';
 
     protected $fillable = [
-       'job_order_no',
+            'job_order_no',
            'nomor_paspor',
            'nama_tionghoa',
            'nama_inggris',

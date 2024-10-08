@@ -29,7 +29,7 @@ class SelectedInformationController extends Controller
     public function index()
     {
         //
-        return view('selected_information.index');
+        return view('selected_information.index'); 
     }
 
     /**
@@ -38,6 +38,7 @@ class SelectedInformationController extends Controller
     public function create()
     {
         //
+        return view('selected_information.form');
     }
 
     /**
@@ -62,6 +63,8 @@ class SelectedInformationController extends Controller
     public function edit(string $id)
     {
         //
+        $data = SelectedInformation::findOrFail($id);
+        return view('selected_information.form',compact(['data']));
     }
 
     /**
