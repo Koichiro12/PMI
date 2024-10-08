@@ -8,7 +8,7 @@
 
         <!-- Widgets -->
         <div class="row clearfix">
-            <div class="{{auth()->user()->role == 'User' ? 'col-md-12' : 'col-lg-6'}} col-md-3 col-sm-6 col-xs-12">
+            <div class="{{auth()->user()->role == 'User' ? 'col-lg-12' : 'col-lg-6'}} col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-pink hover-expand-effect">
                     <div class="icon">
                         <i class="material-icons">diversity_1</i>

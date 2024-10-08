@@ -3,8 +3,9 @@
 
     <body class="login-page">
         <div class="login-box">
-            <div class="logo">
-                <a href="#">Admin Panel <b>P3MI</b></a>
+            <div class="logo text-center">
+                <img src="{{asset('assets/images/logo.png')}}" height="100px">
+                <a href="{{route('login')}}">Admin Panel <b>P3MI</b></a>
                 <small>PT. AIDA DUTA INDONESIA SEJAHTERA</small>
             </div>
             <div class="card">

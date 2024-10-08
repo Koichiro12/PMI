@@ -16,11 +16,13 @@ class KeuanganController extends Controller
     //
     public function index(Request $request)
     {
+        $this->RolesAllowed(['Administrator']);
         return view('keuangan.index');
     }
 
     public function list(Request $request)
     {
+        $this->RolesAllowed(['Administrator']);
         if ($request->ajax()) {
             $users = Biodata::query();
             return DataTables::of($users)->make();
@@ -31,12 +33,14 @@ class KeuanganController extends Controller
 
     public function Biaya(Request $request, string $id)
     {
+        $this->RolesAllowed(['Administrator']);
         $paymentCategory = PaymentCategory::where('payment_category_status', '=', '1')->latest()->get();
         $paymentAmount = PaymentAmount::where('biodata_id', '=', $id)->latest()->get();
         return view('keuangan.biaya', compact(['paymentCategory', 'id', 'paymentAmount']));
     }
     public function setBiaya(Request $request, string $id)
     {
+        $this->RolesAllowed(['Administrator']);
         $paymentCategory = PaymentCategory::latest()->get();
         $paymentAmount = PaymentAmount::lockForUpdate()->where('biodata_id', '=', $id)->latest()->get();
         foreach ($paymentCategory as $pc) {
@@ -68,11 +72,13 @@ class KeuanganController extends Controller
 
     public function detail(Request $request, string $id)
     {
+        $this->RolesAllowed(['Administrator']);
         $biodata = Biodata::findOrFail($id);
         $paymentCategory = PaymentCategory::where('payment_category_status', '=', '1')->latest()->get();
         return view('keuangan.detail', compact(['biodata', 'paymentCategory', 'id']));
     }
     public function StorePayment(Request $request){
+        $this->RolesAllowed(['Administrator']);
        $validate = Validator::make($request->all(),[
             'biodata_id' => ['required'],
             'payment_categories_id' => ['required'],
@@ -97,6 +103,7 @@ class KeuanganController extends Controller
        return redirect()->back()->with('error',value: 'Input Data Gagal, Silahkan coba lagi beberapa saat lagi !');
     }
     public function UpdatePayment(Request $request,string $id){
+        $this->RolesAllowed(['Administrator']);
         $validate = Validator::make($request->all(),[
             'type_payment' => ['required'],
             'payment' => ['required'],
@@ -120,6 +127,7 @@ class KeuanganController extends Controller
        return redirect()->back()->with('error',value: 'Update Data Gagal, Silahkan coba lagi beberapa saat lagi !');
     }
     public function DestroyPayment(string $id){
+        $this->RolesAllowed(['Administrator']);
         $data = Payment::findOrFail($id);
         if($data->bukti != null && file_exists($this->defaultUploadsDirectory.'/'.$data->bukti)){
             unlink($this->defaultUploadsDirectory.'/'.$data->bukti);
@@ -130,6 +138,7 @@ class KeuanganController extends Controller
 
     public function PaymentList(Request $request, string $id = null)
     {
+        $this->RolesAllowed(['Administrator']);
         if ($request->ajax()) {
             $payment = Payment::where('biodata_id', '=', $id)->latest()->get();
             return DataTables::of($payment)
