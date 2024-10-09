@@ -47,6 +47,21 @@ class SelectedInformationController extends Controller
     public function store(Request $request)
     {
         //
+        $validate = \Validator::make($request->all(),[
+            'job_order_no' => ['required'],
+            'nama_tionghoa' => ['required'],
+            'nama_inggris' => ['required'],
+            'tma' => ['required']
+        ]);
+        if($validate->fails()){
+            return redirect()->back()->withErrors($validate)->withInput();
+        }
+        $insert = SelectedInformation::insertData($request);
+        if($insert){
+            return redirect()->route('selected_information.index')->with('success',"Insert Data Berhasil");
+        }
+        return redirect()->back()->with('error',value: 'Insert Data Gagal, Silahkan coba lagi beberapa saat lagi !');
+
     }
 
     /**
@@ -73,6 +88,21 @@ class SelectedInformationController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $validate = \Validator::make($request->all(),[
+            'job_order_no' => ['required'],
+            'nama_tionghoa' => ['required'],
+            'nama_inggris' => ['required'],
+            'tma' => ['required']
+        ]);
+        if($validate->fails()){
+            return redirect()->back()->withErrors($validate)->withInput();
+        }
+        $update = SelectedInformation::updateData($id,$request);
+        if($update){
+            return redirect()->route('selected_information.index')->with('success',"Update Data Berhasil");
+        }
+        return redirect()->back()->with('error',value: 'Update Data Gagal, Silahkan coba lagi beberapa saat lagi !');
+
     }
 
     /**
@@ -81,5 +111,8 @@ class SelectedInformationController extends Controller
     public function destroy(string $id)
     {
         //
+        $oldData = SelectedInformation::findOrFail($id);
+        $oldData->delete();
+        return redirect()->route('selected_information.index')->with('success',"Hapus Data Berhasil");
     }
 }

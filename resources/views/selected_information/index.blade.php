@@ -68,24 +68,24 @@
                     }
                 },
                 {
-                    data:"id",
-                    name:"id"
+                    data:"job_order_no",
+                    name:"job_order_no"
                 },
                 {
-                    data:"id",
-                    name:"id"
+                    data:"nomor_seri",
+                    name:"nomor_seri"
                 },
                 {
-                    data:"id",
-                    name:"id"
+                    data:"nama_inggris",
+                    name:"nama_inggris"
                 },
                 {
-                    data:"id",
-                    name:"id"
+                    data:"nama_tionghoa",
+                    name:"nama_tionghoa"
                 },
                 {
-                    data:"id",
-                    name:"id"
+                    data:"tma",
+                    name:"tma"
                 },
                 {
                     data: "id",
