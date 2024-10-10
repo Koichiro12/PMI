@@ -115,7 +115,7 @@
                         name: "id",
                         render: function(data, type, row, meta) {
                             let id = data;
-                            return '<form action="{!! url()->current() . "/'+id+'" !!}" method="POST" enctype="multipart/form-data"> @csrf @method('DELETE') <a href="{!! url()->current() . "/'+id+'/printPdf" !!}" class="btn btn-primary btn-block m-2" name="print_pdf" id="print_pdf" target="_blank" >Download (PDF) </a> <a href="{!! url()->current() . "/'+id+'/edit" !!}" class="btn btn-warning btn-block m-2" name="edit" id="edit" >edit</a><button type="submit" onclick="confirmDelete(event,this)" class="btn btn-danger btn-block m-2">hapus</button></form>';
+                            return '<form action="{!! url()->current() . "/'+id+'" !!}" method="POST" enctype="multipart/form-data"> @csrf @method('DELETE') <a href="{!! url()->current() . "/'+id+'/printPdf" !!}" class="btn btn-primary btn-block m-2" name="print_pdf" id="print_pdf" target="_blank" >Print / Download (PDF) </a> <a href="{!! url()->current() . "/'+id+'/edit" !!}" class="btn btn-warning btn-block m-2" name="edit" id="edit" >edit</a><button type="submit" onclick="confirmDelete(event,this)" class="btn btn-danger btn-block m-2">hapus</button></form>';
                         }
                     },
                 ]

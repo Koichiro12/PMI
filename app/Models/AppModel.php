@@ -12,8 +12,6 @@ class AppModel extends Model
     protected static $_primaryKey = 'id';
     protected $table = '';
 
-
-
     public static function getCount(){
         return self::count();
     }

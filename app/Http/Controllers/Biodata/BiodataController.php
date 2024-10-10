@@ -223,6 +223,7 @@ class BiodataController extends Controller
     }
 
     public function printPdf(string $id){
-        
+        $data = Biodata::findOrFail($id);
+        return view('biodata.print',compact(['data']));
     }
 }
