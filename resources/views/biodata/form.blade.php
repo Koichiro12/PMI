@@ -31,7 +31,8 @@
                         </div>
                     </div>
                     <div class="body">
-                        <form action="{{ isset($data) ? route('biodata.update', $data->id) : route('biodata.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ isset($data) ? route('biodata.update', $data->id) : route('biodata.store') }}"
+                            method="POST" enctype="multipart/form-data">
                             @method(isset($data) ? 'PUT' : 'POST')
                             @csrf
                             <div class="row clearfix">
@@ -54,7 +55,8 @@
                                     <div class="form-group form-float">
                                         <div class="form-line @error('kode_biodata') error focused @enderror">
                                             <input type="text" id="kode_biodata" name="kode_biodata"
-                                                value="{{ isset($data) ? $data->kode_biodata : old('kode_biodata') }}" class="form-control">
+                                                value="{{ isset($data) ? $data->kode_biodata : old('kode_biodata') }}"
+                                                class="form-control">
                                             <label class="form-label">Kode Biodata</label>
                                         </div>
                                     </div>
@@ -63,7 +65,8 @@
                                     <div class="form-group form-float">
                                         <div class="form-line @error('nama') error focused @enderror">
                                             <input type="text" id="name" name="nama"
-                                                value="{{ isset($data) ? $data->nama : old('nama') }}" class="form-control">
+                                                value="{{ isset($data) ? $data->nama : old('nama') }}"
+                                                class="form-control">
                                             <label class="form-label">Name</label>
                                         </div>
                                     </div>
@@ -72,7 +75,8 @@
                                     <div class="form-group form-float">
                                         <div class="form-line @error('tempat_lahir') error focused @enderror">
                                             <input type="text" id="tempat_lahir" name="tempat_lahir"
-                                                value="{{ isset($data) ? $data->tempat_lahir : old('tempat_lahir') }}" class="form-control">
+                                                value="{{ isset($data) ? $data->tempat_lahir : old('tempat_lahir') }}"
+                                                class="form-control">
                                             <label class="form-label">Tempat Lahir</label>
                                         </div>
                                     </div>
@@ -91,7 +95,8 @@
                                     <div class="form-group form-float">
                                         <div class="form-line @error('umur') error focused @enderror">
                                             <input type="number" id="umur" name="umur"
-                                                value="{{ isset($data) ? $data->umur : old('umur') }}" class="form-control">
+                                                value="{{ isset($data) ? $data->umur : old('umur') }}"
+                                                class="form-control">
                                             <label class="form-label">Umur</label>
                                         </div>
                                     </div>
@@ -169,7 +174,8 @@
                                     <div class="form-group form-float">
                                         <div class="form-line @error('pendidikan') error focused @enderror">
                                             <input type="text" id="pendidikan" name="pendidikan"
-                                                value="{{ isset($data) ? $data->pendidikan : old('pendidikan') }}" class="form-control">
+                                                value="{{ isset($data) ? $data->pendidikan : old('pendidikan') }}"
+                                                class="form-control">
                                             <label class="form-label">Pendidikan</label>
                                         </div>
                                     </div>
@@ -178,7 +184,8 @@
                                     <div class="form-group form-float">
                                         <div class="form-line @error('bahasa') error focused @enderror">
                                             <input type="text" id="bahasa" name="bahasa"
-                                                value="{{ isset($data) ? $data->bahasa : old('bahasa') }}" class="form-control">
+                                                value="{{ isset($data) ? $data->bahasa : old('bahasa') }}"
+                                                class="form-control">
                                             <label class="form-label">Bahasa</label>
                                         </div>
                                     </div>
@@ -201,7 +208,8 @@
                                     <div class="form-group form-float">
                                         <div class="form-line @error('umur_ayah') error focused @enderror">
                                             <input type="number" id="umur_ayah" name="umur_ayah"
-                                                value="{{ isset($data) ? $data->umur_ayah : old('umur_ayah') }}" class="form-control">
+                                                value="{{ isset($data) ? $data->umur_ayah : old('umur_ayah') }}"
+                                                class="form-control">
                                             <label class="form-label">Umur Ayah</label>
                                         </div>
                                     </div>
@@ -220,7 +228,8 @@
                                     <div class="form-group form-float">
                                         <div class="form-line @error('umur_ibu') error focused @enderror">
                                             <input type="number" id="umur_ibu" name="umur_ibu"
-                                                value="{{ isset($data) ? $data->umur_ibu : old('umur_ibu') }}" class="form-control">
+                                                value="{{ isset($data) ? $data->umur_ibu : old('umur_ibu') }}"
+                                                class="form-control">
                                             <label class="form-label">Umur Ibu</label>
                                         </div>
                                     </div>
@@ -229,7 +238,8 @@
                                     <div class="form-group form-float">
                                         <div class="form-line @error('anak_ke') error focused @enderror">
                                             <input type="number" id="anak_ke" name="anak_ke"
-                                                value="{{ isset($data) ? $data->anak_ke : old('anak_ke') }}" class="form-control">
+                                                value="{{ isset($data) ? $data->anak_ke : old('anak_ke') }}"
+                                                class="form-control">
                                             <label class="form-label">Anak ke</label>
                                         </div>
                                     </div>
@@ -298,7 +308,8 @@
                                     <div class="form-group form-float">
                                         <div class="form-line @error('nama_suami') error focused @enderror">
                                             <input type="text" id="nama_suami" name="nama_suami"
-                                                value="{{ isset($data) ? $data->nama_suami : old('nama_suami') }}" class="form-control">
+                                                value="{{ isset($data) ? $data->nama_suami : old('nama_suami') }}"
+                                                class="form-control">
                                             <label class="form-label">Nama Suami</label>
                                         </div>
                                     </div>
@@ -317,7 +328,8 @@
                                     <div class="form-group form-float">
                                         <div class="form-line @error('jml_anak') error focused @enderror">
                                             <input type="number" id="jml_anak" name="jml_anak"
-                                                value="{{ isset($data) ? $data->jml_anak : old('jml_anak') }}" class="form-control">
+                                                value="{{ isset($data) ? $data->jml_anak : old('jml_anak') }}"
+                                                class="form-control">
                                             <label class="form-label">Jumlah Anak</label>
                                         </div>
                                     </div>
@@ -520,6 +532,75 @@
                                         @endforeach
                                     @endif
                                 </div>
+                                <div class="col-md-12">
+                                    <small>Note Question</small>
+                                    <hr>
+                                </div>
+                                @foreach ($question as $q)
+                                    <div class="col-sm-12">
+                                        <p>{{ $loop->index + 1 }}. {{ $q->question }}</p>
+                                        @php
+                                            $answer = '';
+                                            $customAnswer = '';
+                                            if (isset($data) && $data->BiodataAnswers()->count() > 0) {
+                                                foreach ($data->BiodataAnswers as $b) {
+                                                    if ($b->questions_id == $q->id) {
+                                                        $answer = $b->answer;
+                                                        $customAnswer = $b->custom_answer;
+                                                    }
+                                                }
+                                            }
+                                        @endphp
+                                        @if ($q->type_question == '0')
+                                            @if ($q->Options()->count() > 0)
+                                                @foreach ($q->Options as $qo)
+                                                <div class="col-sm-12">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line">
+                                                            <input type="radio" name="biodata_answer_{{ $q->id }}" id="biodata_answer_{{ $q->id }}_{{$qo->id}}"
+                                                                class="filled-in chk-col-yellow" value="{{$qo->id}}"
+                                                                {{ isset($data) && $answer == $qo->id ? 'checked' : '' }}>
+                                                            <label for="biodata_answer_{{ $q->id }}_{{$qo->id}}">{{ $qo->option_text }}</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @endforeach
+                                                <div class="col-sm-4">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line">
+                                                            <input type="radio" name="biodata_answer_{{ $q->id }}" id="biodata_answer_{{ $q->id }}_0"
+                                                                class="filled-in chk-col-yellow" value="0"
+                                                                {{ isset($data) && $answer == '0' ? 'checked' : '' }}>
+                                                            <label for="biodata_answer_{{ $q->id }}_0">其它說明</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line">
+                                                            <input type="text" id="biodata_answer_{{ $q->id }}_0_text" name="biodata_answer_{{ $q->id }}_0_text"
+                                                                value="{{ $customAnswer }}"
+                                                                class="form-control">
+                                                            <label class="form-label">其它說明</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endif
+                                        @if ($q->type_question == '1')
+                                            <div class="form-group form-float">
+                                                <div class="form-line ">
+                                                    <input type="text" id="biodata_answer_{{ $q->id }}"
+                                                        name="biodata_answer_{{ $q->id }}"
+                                                        value="{{ $answer }}" class="form-control">
+                                                    <label class="form-label">Answer</label>
+                                                </div>
+                                            </div>
+                                        @endif
+
+
+                                    </div>
+                                @endforeach
                                 <div class="col-sm-12">
                                     <button type="submit" class="btn btn-primary" id="submit"
                                         class="submit">Simpan</button>

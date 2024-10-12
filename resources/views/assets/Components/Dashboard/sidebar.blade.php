@@ -33,13 +33,29 @@
                      <span>Dashboard</span>
                  </a>
              </li>
-             <li {!! url()->current() == route('biodata.index') || str_contains(url()->current(), 'biodata')
+             <li {!! url()->current() == route('biodata.index') ||
+             str_contains(url()->current(), 'biodata') ||
+             url()->current() == route('questions.index') ||
+             str_contains(url()->current(), 'questions')
                  ? 'class="active"'
                  : '' !!}>
-                 <a href="{{ route('biodata.index') }}">
+                 <a href="#" class="menu-toggle">
                      <i class="material-icons">diversity_1</i>
                      <span>Biodata</span>
                  </a>
+                 <ul class="ml-menu">
+                     <li {!! url()->current() == route('questions.index') || str_contains(url()->current(), 'questions')
+                         ? 'class="active"'
+                         : '' !!}>
+                         <a href="{{ route('questions.index') }}">Note Questions</a>
+                     </li>
+                     <li {!! url()->current() == route('biodata.index') || str_contains(url()->current(), 'biodata')
+                         ? 'class="active"'
+                         : '' !!}>
+                         <a href="{{ route('biodata.index') }}">Biodata</a>
+                     </li>
+                     
+                 </ul>
              </li>
              <li {!! url()->current() == route('pmi.index') ||
              str_contains(url()->current(), 'PMI') ||

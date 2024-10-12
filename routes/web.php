@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Biodata\BiodataController;
+use App\Http\Controllers\Biodata\QuestionsController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Keuangan\KategoriPembayaranController;
@@ -32,6 +33,10 @@ Route::group(['middleware'=>['prevent-back','auth']],function(){
     
     Route::get('/profile',[ProfileController::class,'index'])->name('profile');
     Route::post('/profile/update',[ProfileController::class,'updateProfile'])->name('profile.update');
+
+
+    Route::resource('questions',QuestionsController::class);
+    Route::get('pertanyaan/list',[QuestionsController::class,'list'])->name('questions.list');
 
     //Biodata
     Route::get('biodata/{id}/printPdf',[BiodataController::class,'printPdf'])->name('biodata.printPDF');

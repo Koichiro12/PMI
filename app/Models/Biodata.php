@@ -65,4 +65,8 @@ class Biodata extends AppModel
         return $this->hasMany(PaymentAmount::class);
     }
 
+    public function BiodataAnswers(){
+        return $this->hasMany(BiodataAnswers::class);
+    }
+
 }

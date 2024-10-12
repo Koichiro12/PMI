@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Biodata;
 
 use App\Http\Controllers\Controller;
 use App\Models\Biodata;
+use App\Models\BiodataAnswers;
 use App\Models\BiodataExperience;
 use App\Models\BiodataFamilyOverseas;
+use App\Models\Questions;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -35,7 +37,8 @@ class BiodataController extends Controller
     public function create()
     {
         //
-        return view('biodata.form');
+        $question = Questions::all();
+        return view('biodata.form',compact(['question']));
     }
 
     /**
@@ -44,6 +47,7 @@ class BiodataController extends Controller
     public function store(Request $request)
     {
         //
+
         $validate = \Validator::make($request->all(),[
             'kode_biodata' => ['required'],
             'nama' => ['required'],
@@ -69,8 +73,34 @@ class BiodataController extends Controller
             $file->move($this->defaultUploadsDirectory,$name);
             $request['foto'] = $name;
         }
-        $insert = Biodata::insertData($request,['foto-biodata','fit_name','fit_relation','fit_location','domestic_masa_kerja','domestic_wilayah_kerja','domestic_desc_kerja','overseas_masa_kerja','overseas_wilayah_kerja','overseas_desc_kerja']);
+
+        //Exceptions
+        $Question = Questions::all();
+        $exceptions = ['foto-biodata','fit_name','fit_relation','fit_location','domestic_masa_kerja','domestic_wilayah_kerja','domestic_desc_kerja','overseas_masa_kerja','overseas_wilayah_kerja','overseas_desc_kerja'];
+        $qexceptions = [];
+        foreach($Question as $q){
+            array_push($qexceptions,"biodata_answer_". $q->id);
+            array_push($qexceptions,"biodata_answer_". $q->id."_0");
+            array_push($qexceptions,"biodata_answer_". $q->id."_0_text");
+        }
+        $exceptions = array_merge($exceptions,$qexceptions);
+       
+        $insert = Biodata::insertData($request,$exceptions);
         if($insert){
+            foreach($Question as $q){
+                if(isset($request['biodata_answer_'.$q->id])){
+                    $customAnswer = '';
+                    if($request['biodata_answer_'.$q->id] == '0'){
+                        $customAnswer = $request['biodata_answer_'.$q->id.'_0_text'];
+                    }
+                    BiodataAnswers::insert([
+                        'biodata_id' => $insert,
+                        'questions_id' => $q->id,
+                        'answer' => $request['biodata_answer_'.$q->id],
+                        'custom_answer' => $customAnswer
+                    ]);
+                }
+            }
             if(isset($request->fit_name) && is_array($request->fit_name)){
                 for($val = 0; $val < count($request->fit_name);$val++){
                     BiodataFamilyOverseas::insert([
@@ -123,7 +153,8 @@ class BiodataController extends Controller
     {
         //
         $data = Biodata::findOrFail($id);
-        return view('biodata.form',compact(['data']));
+        $question = Questions::all();
+        return view('biodata.form',compact(['data','question']));
     }
 
     /**
@@ -159,12 +190,37 @@ class BiodataController extends Controller
             $file->move($this->defaultUploadsDirectory,$name);
             $request['foto'] = $name;
         }
-        $update = Biodata::updateData($id,$request,['foto-biodata','fit_name','fit_relation','fit_location','domestic_masa_kerja','domestic_wilayah_kerja','domestic_desc_kerja','overseas_masa_kerja','overseas_wilayah_kerja','overseas_desc_kerja']);
+
+        $Question = Questions::all();
+        $exceptions = ['foto-biodata','fit_name','fit_relation','fit_location','domestic_masa_kerja','domestic_wilayah_kerja','domestic_desc_kerja','overseas_masa_kerja','overseas_wilayah_kerja','overseas_desc_kerja'];
+        $qexceptions = [];
+        foreach($Question as $q){
+            array_push($qexceptions,"biodata_answer_". $q->id);
+            array_push($qexceptions,"biodata_answer_". $q->id."_0");
+            array_push($qexceptions,"biodata_answer_". $q->id."_0_text");
+        }
+        $exceptions = array_merge($exceptions,$qexceptions);
+        $update = Biodata::updateData($id,$request,$exceptions);
         if($update){
             BiodataFamilyOverseas::where('biodata_id','=',$id)->delete();
             BiodataExperience::where([['biodata_id','=',$id],['type_pekerjaan','=','domestic']])->delete();
             BiodataExperience::where([['biodata_id','=',$id],['type_pekerjaan','=','overseas']])->delete();
-            
+            BiodataAnswers::where('biodata_id','=',$id)->delete();
+            foreach($Question as $q){
+                if(isset($request['biodata_answer_'.$q->id])){
+                    $customAnswer = '';
+                    if($request['biodata_answer_'.$q->id] == '0'){
+                        $customAnswer = $request['biodata_answer_'.$q->id.'_0_text'];
+                    }
+                    BiodataAnswers::insert([
+                        'biodata_id' => $id,
+                        'questions_id' => $q->id,
+                        'answer' => $request['biodata_answer_'.$q->id],
+                        'custom_answer' => $customAnswer
+                    ]);
+                }
+            }
+
             if(isset($request->fit_name) && is_array($request->fit_name)){
                
                 for($val = 0; $val < count($request->fit_name);$val++){
@@ -200,7 +256,7 @@ class BiodataController extends Controller
                     ]);
                 }
             }
-            return redirect()->route('biodata.index')->with('success',"Input Data Berhasil");
+            return redirect()->route('biodata.index')->with('success',"Update Data Berhasil");
         }
         return redirect()->back()->with('error','Update Data Gagal, Silahkan coba lagi beberapa saat lagi !');
    
@@ -224,6 +280,10 @@ class BiodataController extends Controller
 
     public function printPdf(string $id){
         $data = Biodata::findOrFail($id);
-        return view('biodata.print',compact(['data']));
+        $question = Questions::all();
+        return view('biodata.print',compact(['data','question']));
     }
+
+    
+
 }
