@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <p>Tunggu Sebentar...</p>
+        <p>Loading...</p>
     </div>
 </div>
 <!-- #END# Page Loader -->

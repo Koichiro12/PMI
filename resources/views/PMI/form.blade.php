@@ -2,8 +2,8 @@
 @section('content')
     <div class="container-fluid d-flex justify-content-between">
         <div class="block-header">
-            <h1> Edit PMI</h1>
-            <small> Edit Data PMI dengan mengisikan form disini !</small>
+            <h1> Update PMI</h1>
+            <small> Update PMI data by filling in the form here!</small>
         </div>
         @if (session()->has('success'))
             <div class="alert alert-success">
@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>Biodata
-                            <small>Biodata dari PMI akan muncul dibawah sini</small>
+                            <small>Biodata from PMI will appear below here</small>
                         </h2>
                     </div>
                     <div class="body">
@@ -37,7 +37,7 @@
                         <div class="table-responsive">
                             <table class="table no-border">
                                 <tr>
-                                    <td width="15%">Nama</td>
+                                    <td width="15%">Name</td>
                                     <td>: {{ $biodata->nama }}</td>
                                 </tr>
                                 <tr>
@@ -50,7 +50,7 @@
                                     <td>: {{ $biodata->jenis_kelamin }}</td>
                                 </tr>
                                 <tr>
-                                    <td width="15%">Umur</td>
+                                    <td width="15%">Age</td>
                                     <td>: {{ $biodata->umur }}</td>
                                 </tr>
                                 <tr>
@@ -58,11 +58,11 @@
                                     <td>: {{ $biodata->tb }} / {{ $biodata->bb }}</td>
                                 </tr>
                                 <tr>
-                                    <td width="15%">Agama</td>
+                                    <td width="15%">Religion</td>
                                     <td>: {{ $biodata->agama }}</td>
                                 </tr>
                                 <tr>
-                                    <td width="15%">Kewarganegaraan</td>
+                                    <td width="15%">Citizenship</td>
                                     <td>: {{ $biodata->kewarganegaraan }}</td>
                                 </tr>
                             </table>
@@ -75,8 +75,8 @@
                     <div class="header row">
                         <div class="col-md-8">
                             <h2>
-                                Edit Data PMI
-                                <small>Edit Data PMI pada form dibawah ini !</small>
+                                Update PMI
+                                <small>Update PMI data in the form below!</small>
                             </h2>
                         </div>
                         <div class="col-md-4">
@@ -90,7 +90,7 @@
                             @csrf
                             <div class="row clearfix">
                                 <div class="col-md-12">
-                                    <small>Isilah form di bawah ini dengan baik dan benar. jika tidak tersedia bisa di isi dengan tanda '-' (mines).</small>
+                                    <small>Fill in the form below properly and correctly. If it is not available, you can fill it with a '-' sign (mines).</small>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
@@ -106,7 +106,7 @@
                                         <div class="form-line  @error('nama') error @enderror"">
                                             <input type="text" id="nama" name="nama" value="{{ isset($pmi) ? $pmi->nama : $biodata->nama }}"
                                                 class="form-control" required>
-                                            <label class="form-label">Nama</label>
+                                            <label class="form-label">Name</label>
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
                                         <div class="form-line  @error('umur') error @enderror"">
                                             <input type="text" id="umur" name="umur" value="{{ isset($pmi) ? $pmi->umur : $biodata->umur }}"
                                                 class="form-control" required>
-                                            <label class="form-label">Umur</label>
+                                            <label class="form-label">Age</label>
                                         </div>
                                     </div>
                                 </div>
@@ -125,10 +125,10 @@
                                             <select name="jenis_kelamin" id="jenis_kelamin" class="form-control show-tick">
                                                 <option value="L"
                                                     {{ isset($pmi) && $pmi->jenis_kelamin == 'L' || $biodata->jenis_kelamin == 'L' ? 'selected' : '' }}>
-                                                    Laki Laki</option>
+                                                    Men</option>
                                                 <option value="P"
                                                     {{ isset($pmi) && $pmi->jenis_kelamin == 'P' || $biodata->jenis_kelamin == 'P' ? 'selected' : '' }}>
-                                                    Perempuan</option>
+                                                    Women</option>
                                             </select>   
                                         </div>
                                     </div>
@@ -138,7 +138,7 @@
                                         <div class="form-line  @error('asal') error @enderror"">
                                             <textarea type="text" id="asal" name="asal"
                                                 class="form-control">{{ isset($pmi) ? $pmi->asal : $biodata->asal }}</textarea>
-                                            <label class="form-label">Asal</label>
+                                            <label class="form-label">Origin Address</label>
                                         </div>
                                     </div>
                                 </div>
@@ -165,12 +165,12 @@
                                         <div class="form-line  @error('pk_number') error @enderror"">
                                             <input type="text" id="pk_number" name="pk_number" value="{{ isset($pmi) ? $pmi->pk_number : old('pk_number') }}"
                                                 class="form-control" required>
-                                            <label class="form-label">Nomor PK</label>
+                                            <label class="form-label">PK Number</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <small>Lengkapi dokumen dibawah ini dengan menginput file berbentuk PDF</small>
+                                    <small>Complete the document below by inputting the PDF file</small>
                                 </div>
                                 @foreach ($category_files as $item)
                                 <div class="col-md-12">
@@ -194,7 +194,7 @@
                                 @endforeach
                                 <div class="col-sm-12">
                                     <button type="submit" class="btn btn-primary" id="submit"
-                                        class="submit">Simpan</button>
+                                        class="submit">Save</button>
                                 </div>
                             </div>
                         </form>

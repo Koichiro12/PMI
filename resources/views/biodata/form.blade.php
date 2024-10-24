@@ -2,8 +2,8 @@
 @section('content')
     <div class="container-fluid d-flex justify-content-between">
         <div class="block-header">
-            <h1> {{ isset($data) ? 'Edit' : 'Tambah' }} Biodata</h1>
-            <small> {{ isset($data) ? 'Edit' : 'Tambah' }} Data Biodata dengan mengisikan form disini !</small>
+            <h1> {{ isset($data) ? 'Update' : 'Add' }} Biodata</h1>
+            <small> {{ isset($data) ? 'Update' : 'Add' }} Biodata by filling in the form here!</small>
         </div>
         @if (session()->has('success'))
             <div class="alert alert-success">
@@ -21,13 +21,13 @@
                     <div class="header row">
                         <div class="col-md-10">
                             <h2>
-                                {{ isset($data) ? 'Edit' : 'Tambah' }} Data Biodata
-                                <small>{{ isset($data) ? 'Edit' : 'Tambah' }} Data biodata pada form dibawah ini !</small>
+                                {{ isset($data) ? 'Update' : 'Add' }} Biodata
+                                <small>{{ isset($data) ? 'Update' : 'Add' }} Biodata by filling in the form here!</small>
                             </h2>
                         </div>
                         <div class="col-md-2">
                             <a href="{{ route('biodata.index') }}" class="btn btn-danger btn-block" name="tambah"
-                                id="tambah">Data Biodata</a>
+                                id="tambah">Biodata</a>
                         </div>
                     </div>
                     <div class="body">
@@ -37,7 +37,7 @@
                             @csrf
                             <div class="row clearfix">
                                 <div class="col-md-12">
-                                    <small>Data Diri</small>
+                                    <small>Personal Informations</small>
                                     <hr>
                                 </div>
                                 <div class="col-md-12">
@@ -57,7 +57,7 @@
                                             <input type="text" id="kode_biodata" name="kode_biodata"
                                                 value="{{ isset($data) ? $data->kode_biodata : old('kode_biodata') }}"
                                                 class="form-control">
-                                            <label class="form-label">Kode Biodata</label>
+                                            <label class="form-label">Biodata Code</label>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +77,7 @@
                                             <input type="text" id="tempat_lahir" name="tempat_lahir"
                                                 value="{{ isset($data) ? $data->tempat_lahir : old('tempat_lahir') }}"
                                                 class="form-control">
-                                            <label class="form-label">Tempat Lahir</label>
+                                            <label class="form-label">Place of birth</label>
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
                                             <input type="date" id="tgl_lahir" name="tgl_lahir"
                                                 value="{{ isset($data) ? $data->tgl_lahir : old('tgl_lahir') }}"
                                                 class="form-control">
-                                            <label class="form-label">Tanggal Lahir</label>
+                                            <label class="form-label">Date Birth</label>
                                         </div>
                                     </div>
                                 </div>
@@ -97,7 +97,7 @@
                                             <input type="number" id="umur" name="umur"
                                                 value="{{ isset($data) ? $data->umur : old('umur') }}"
                                                 class="form-control">
-                                            <label class="form-label">Umur</label>
+                                            <label class="form-label">Age</label>
                                         </div>
                                     </div>
                                 </div>
@@ -107,10 +107,10 @@
                                             <select name="jenis_kelamin" id="jenis_kelamin" class="form-control show-tick">
                                                 <option value="L"
                                                     {{ isset($data) && $data->jenis_kelamin == 'L' ? 'selected' : '' }}>
-                                                    Laki Laki</option>
+                                                    Man</option>
                                                 <option value="P"
                                                     {{ isset($data) && $data->jenis_kelamin == 'P' ? 'selected' : '' }}>
-                                                    Perempuan</option>
+                                                    Woman</option>
                                             </select>
 
                                         </div>
@@ -121,7 +121,7 @@
                                         <div class="form-line @error('tb') error focused @enderror">
                                             <input type="number" id="tb" name="tb"
                                                 value="{{ isset($data) ? $data->tb : old('tb') }}" class="form-control">
-                                            <label class="form-label">Tinggi Badan</label>
+                                            <label class="form-label">Height</label>
                                         </div>
                                     </div>
                                 </div>
@@ -130,7 +130,7 @@
                                         <div class="form-line @error('bb') error focused @enderror">
                                             <input type="number" id="bb" name="bb"
                                                 value="{{ isset($data) ? $data->bb : old('bb') }}" class="form-control">
-                                            <label class="form-label">Berat Badan</label>
+                                            <label class="form-label">Weight</label>
                                         </div>
                                     </div>
                                 </div>
@@ -166,7 +166,7 @@
                                             <input type="text" id="kewarganegaraan" name="kewarganegaraan"
                                                 value="{{ isset($data) ? $data->kewarganegaraan : old('kewarganegaraan') }}"
                                                 class="form-control">
-                                            <label class="form-label">kewarganegaraan</label>
+                                            <label class="form-label">Citizenship</label>
                                         </div>
                                     </div>
                                 </div>
@@ -176,7 +176,7 @@
                                             <input type="text" id="pendidikan" name="pendidikan"
                                                 value="{{ isset($data) ? $data->pendidikan : old('pendidikan') }}"
                                                 class="form-control">
-                                            <label class="form-label">Pendidikan</label>
+                                            <label class="form-label">Education</label>
                                         </div>
                                     </div>
                                 </div>
@@ -186,12 +186,12 @@
                                             <input type="text" id="bahasa" name="bahasa"
                                                 value="{{ isset($data) ? $data->bahasa : old('bahasa') }}"
                                                 class="form-control">
-                                            <label class="form-label">Bahasa</label>
+                                            <label class="form-label">Language</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <small>Anggota Keluarga</small>
+                                    <small>Family members</small>
                                     <hr>
                                 </div>
                                 <div class="col-sm-3">
@@ -200,7 +200,7 @@
                                             <input type="checkbox" name="status_ayah" id="status_ayah"
                                                 class="filled-in chk-col-yellow"
                                                 {{ isset($data) && $data->status_ayah == '1' ? 'checked' : '' }}>
-                                            <label for="status_ayah">Ayah</label>
+                                            <label for="status_ayah">Father</label>
                                         </div>
                                     </div>
                                 </div>
@@ -210,7 +210,7 @@
                                             <input type="number" id="umur_ayah" name="umur_ayah"
                                                 value="{{ isset($data) ? $data->umur_ayah : old('umur_ayah') }}"
                                                 class="form-control">
-                                            <label class="form-label">Umur Ayah</label>
+                                            <label class="form-label">Father's Age</label>
                                         </div>
                                     </div>
                                 </div>
@@ -220,7 +220,7 @@
                                             <input type="checkbox" name="status_ibu" id="status_ibu"
                                                 class="filled-in chk-col-yellow"
                                                 {{ isset($data) && $data->status_ibu == '1' ? 'checked' : '' }}>
-                                            <label for="status_ibu">Ibu</label>
+                                            <label for="status_ibu">Mother</label>
                                         </div>
                                     </div>
                                 </div>
@@ -230,7 +230,7 @@
                                             <input type="number" id="umur_ibu" name="umur_ibu"
                                                 value="{{ isset($data) ? $data->umur_ibu : old('umur_ibu') }}"
                                                 class="form-control">
-                                            <label class="form-label">Umur Ibu</label>
+                                            <label class="form-label">Mother's Age</label>
                                         </div>
                                     </div>
                                 </div>
@@ -240,7 +240,7 @@
                                             <input type="number" id="anak_ke" name="anak_ke"
                                                 value="{{ isset($data) ? $data->anak_ke : old('anak_ke') }}"
                                                 class="form-control">
-                                            <label class="form-label">Anak ke</label>
+                                            <label class="form-label">Child Number</label>
                                         </div>
                                     </div>
                                 </div>
@@ -250,7 +250,7 @@
                                             <input type="number" id="jumlah_saudara" name="jumlah_saudara"
                                                 value="{{ isset($data) ? $data->jumlah_saudara : old('jumlah_saudara') }}"
                                                 class="form-control">
-                                            <label class="form-label">Jumlah Saudara</label>
+                                            <label class="form-label">Number of siblings</label>
                                         </div>
                                     </div>
                                 </div>
@@ -260,7 +260,7 @@
                                             <input type="number" id="kakak_laki_laki" name="jumlah_saudara"
                                                 value="{{ isset($data) ? $data->kakak_laki_laki : old('kakak_laki_laki') }}"
                                                 class="form-control">
-                                            <label class="form-label">Kakak Laki Laki</label>
+                                            <label class="form-label">Older brother</label>
                                         </div>
                                     </div>
                                 </div>
@@ -270,7 +270,7 @@
                                             <input type="number" id="kakak_perempuan" name="kakak_perempuan"
                                                 value="{{ isset($data) ? $data->kakak_perempuan : old('kakak_perempuan') }}"
                                                 class="form-control">
-                                            <label class="form-label">Kakak Perempuan</label>
+                                            <label class="form-label">Big sister</label>
                                         </div>
                                     </div>
                                 </div>
@@ -280,7 +280,7 @@
                                             <input type="number" id="adik_laki_laki" name="adik_laki_laki"
                                                 value="{{ isset($data) ? $data->adik_laki_laki : old('adik_laki_laki') }}"
                                                 class="form-control">
-                                            <label class="form-label">Adik Laki Laki</label>
+                                            <label class="form-label">Younger brother</label>
                                         </div>
                                     </div>
                                 </div>
@@ -290,7 +290,7 @@
                                             <input type="number" id="adik_perempuan" name="adik_perempuan"
                                                 value="{{ isset($data) ? $data->adik_perempuan : old('adik_perempuan') }}"
                                                 class="form-control">
-                                            <label class="form-label">Adik Perempuan</label>
+                                            <label class="form-label">little sister</label>
                                         </div>
                                     </div>
                                 </div>
@@ -300,7 +300,7 @@
                                             <input type="text" id="status_pernikahan" name="status_pernikahan"
                                                 value="{{ isset($data) ? $data->status_pernikahan : old('status_pernikahan') }}"
                                                 class="form-control">
-                                            <label class="form-label">Status Pernikahan</label>
+                                            <label class="form-label">Marital Status</label>
                                         </div>
                                     </div>
                                 </div>
@@ -310,7 +310,7 @@
                                             <input type="text" id="nama_suami" name="nama_suami"
                                                 value="{{ isset($data) ? $data->nama_suami : old('nama_suami') }}"
                                                 class="form-control">
-                                            <label class="form-label">Nama Suami</label>
+                                            <label class="form-label">Husband's Name</label>
                                         </div>
                                     </div>
                                 </div>
@@ -320,7 +320,7 @@
                                             <input type="text" id="karir_suami" name="karir_suami"
                                                 value="{{ isset($data) ? $data->karir_suami : old('karir_suami') }}"
                                                 class="form-control">
-                                            <label class="form-label">Karir Suami</label>
+                                            <label class="form-label">husband's career</label>
                                         </div>
                                     </div>
                                 </div>
@@ -330,7 +330,7 @@
                                             <input type="number" id="jml_anak" name="jml_anak"
                                                 value="{{ isset($data) ? $data->jml_anak : old('jml_anak') }}"
                                                 class="form-control">
-                                            <label class="form-label">Jumlah Anak</label>
+                                            <label class="form-label">Number of children</label>
                                         </div>
                                     </div>
                                 </div>
@@ -340,7 +340,7 @@
                                             <input type="number" id="jml_anak_laki_laki" name="jml_anak_laki_laki"
                                                 value="{{ isset($data) ? $data->jml_anak_laki_laki : old('jml_anak_laki_laki') }}"
                                                 class="form-control">
-                                            <label class="form-label">Anak Laki Laki</label>
+                                            <label class="form-label">boy</label>
                                         </div>
                                     </div>
                                 </div>
@@ -350,7 +350,7 @@
                                             <input type="text" id="umur_anak_laki_laki" name="umur_anak_laki_laki"
                                                 value="{{ isset($data) ? $data->umur_anak_laki_laki : old('umur_anak_laki_laki') }}"
                                                 class="form-control">
-                                            <label class="form-label">Umur Anak Laki Laki</label>
+                                            <label class="form-label">Boys Age</label>
                                         </div>
                                     </div>
                                 </div>
@@ -360,7 +360,7 @@
                                             <input type="number" id="jml_anak_perempuan" name="jml_anak_perempuan"
                                                 value="{{ isset($data) ? $data->jml_anak_perempuan : old('jml_anak_perempuan') }}"
                                                 class="form-control">
-                                            <label class="form-label">Anak Perempuan</label>
+                                            <label class="form-label">Girl</label>
                                         </div>
                                     </div>
                                 </div>
@@ -370,12 +370,12 @@
                                             <input type="text" id="umur_anak_perempuan" name="umur_anak_perempuan"
                                                 value="{{ isset($data) ? $data->umur_anak_perempuan : old('umur_anak_perempuan') }}"
                                                 class="form-control">
-                                            <label class="form-label">Umur Anak Perempuan</label>
+                                            <label class="form-label">Girls Age</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <small>Relasi dan Pengalaman Kerja</small>
+                                    <small>Relationships and Work Experience</small>
                                     <hr>
                                 </div>
                                 <div class="col-sm-10">
@@ -384,13 +384,13 @@
                                             <input type="checkbox" name="family_in_taiwan" id="family_in_taiwan"
                                                 class="filled-in chk-col-yellow"
                                                 {{ isset($data) && $data->family_in_taiwan == '1' ? 'checked' : '' }}>
-                                            <label for="family_in_taiwan">Apakah ada saudara atau teman di Taiwan ?</label>
+                                            <label for="family_in_taiwan">Do you have relatives or friends in Taiwan ?</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button"
-                                        class="btn btn-primary btn-block btn-tambah-fit">Tambah</button>
+                                        class="btn btn-primary btn-block btn-tambah-fit">Add</button>
                                 </div>
                                 <div class="fit_container">
                                     @if (isset($data) && $data->BiodataFamilyOverseas()->count() > 0)
@@ -409,7 +409,7 @@
                                                 <div class="col-sm-3">
                                                     <div class="form-group form-float">
                                                         <div class="form-line">
-                                                            <input type="text" placeholder="Hubungan"
+                                                            <input type="text" placeholder="Relationships"
                                                                 value="{{ $fit->relasi }}" name="fit_relation[]"
                                                                 class="form-control" required>
 
@@ -419,7 +419,7 @@
                                                 <div class="col-sm-4">
                                                     <div class="form-group form-float">
                                                         <div class="form-line">
-                                                            <input type="text" placeholder="Lokasi"
+                                                            <input type="text" placeholder="Location"
                                                                 value="{{ $fit->lokasi }}" name="fit_location[]"
                                                                 class="form-control" required>
 
@@ -427,7 +427,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-2">
-                                                    <button class="btn btn-danger btn-delete btn-block">Hapus</button>
+                                                    <button class="btn btn-danger btn-delete btn-block">Delete</button>
                                                 </div>
 
                                             </div>
@@ -443,7 +443,7 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button"
-                                        class="btn btn-primary btn-block btn-tambah-domestic">Tambah</button>
+                                        class="btn btn-primary btn-block btn-tambah-domestic">Add</button>
                                 </div>
                                 <div class="domestic_container">
                                     @if (isset($data) && $data->BiodataExperiences()->count() > 0)
@@ -456,7 +456,7 @@
                                                                     id="domestic_masa_kerja[]"
                                                                     value="{{ $bed->masa_kerja }}"
                                                                     name="domestic_masa_kerja[]"class="form-control"
-                                                                    placeholder="Masa Kerja" required></div>
+                                                                    placeholder="Period" required></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-3">
@@ -465,7 +465,7 @@
                                                                     id="domestic_wilayah_kerja[]"
                                                                     value="{{ $bed->wilayah_kerja }}"
                                                                     name="domestic_wilayah_kerja[]"class="form-control"
-                                                                    placeholder="Wilayah Kerja" required></div>
+                                                                    placeholder="Working area" required></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4">
@@ -474,11 +474,11 @@
                                                                     id="domestic_desc_kerja[]"
                                                                     value="{{ $bed->desc_pekerjaan }}"
                                                                     name="domestic_desc_kerja[]"class="form-control"
-                                                                    placeholder="Deskripsi Pekerjaan" required></div>
+                                                                    placeholder="Jobdesc" required></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-2"><button type="button"
-                                                            class="btn btn-danger btn-delete-domestic btn-block">Hapus</button>
+                                                            class="btn btn-danger btn-delete-domestic btn-block">Delete</button>
                                                     </div>
                                                 </div>
                                             @endif
@@ -490,7 +490,7 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button"
-                                        class="btn btn-primary btn-block btn-tambah-overseas">Tambah</button>
+                                        class="btn btn-primary btn-block btn-tambah-overseas">Add</button>
                                 </div>
                                 <div class="overseas_container">
                                     @if (isset($data) && $data->BiodataExperiences()->count() > 0)
@@ -503,7 +503,7 @@
                                                                     id="overseas_masa_kerja[]"
                                                                     value="{{ $bed->masa_kerja }}"
                                                                     name="overseas_masa_kerja[]"class="form-control"
-                                                                    placeholder="Masa Kerja" required></div>
+                                                                    placeholder="Period" required></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-3">
@@ -512,7 +512,7 @@
                                                                     id="overseas_wilayah_kerja[]"
                                                                     value="{{ $bed->wilayah_kerja }}"
                                                                     name="overseas_wilayah_kerja[]"class="form-control"
-                                                                    placeholder="Wilayah Kerja" required></div>
+                                                                    placeholder="Working Area" required></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4">
@@ -521,11 +521,11 @@
                                                                     id="overseas_desc_kerja[]"
                                                                     value="{{ $bed->desc_pekerjaan }}"
                                                                     name="overseas_desc_kerja[]"class="form-control"
-                                                                    placeholder="Deskripsi Pekerjaan" required></div>
+                                                                    placeholder="Jobdesc" required></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-2"><button type="button"
-                                                            class="btn btn-danger btn-delete-overseas btn-block">Hapus</button>
+                                                            class="btn btn-danger btn-delete-overseas btn-block">Delete</button>
                                                     </div>
                                                 </div>
                                             @endif
@@ -603,7 +603,7 @@
                                 @endforeach
                                 <div class="col-sm-12">
                                     <button type="submit" class="btn btn-primary" id="submit"
-                                        class="submit">Simpan</button>
+                                        class="submit">Save</button>
                                 </div>
                             </div>
                         </form>
@@ -624,7 +624,7 @@
             $(document).on('click', '.btn-tambah-fit', function(e) {
                 e.preventDefault()
                 let html =
-                    '<div class="fit"><div class="col-sm-3"><div class="form-group form-float"><div class="form-line"><input type="text"  name="fit_name[]" placeholder="Name" class="form-control" required> </div></div></div><div class="col-sm-3"><div class="form-group form-float"><div class="form-line"><input type="text" name="fit_relation[]" placeholder="Hubungan" class="form-control" required></div></div></div><div class="col-sm-4"><div class="form-group form-float"><div class="form-line"><input type="text"  name="fit_location[]" placeholder="Lokasi" class="form-control" required></div></div></div><div class="col-sm-2"> <button type="button" class="btn btn-danger btn-delete btn-block" >Hapus</button></div></div>';
+                    '<div class="fit"><div class="col-sm-3"><div class="form-group form-float"><div class="form-line"><input type="text"  name="fit_name[]" placeholder="Name" class="form-control" required> </div></div></div><div class="col-sm-3"><div class="form-group form-float"><div class="form-line"><input type="text" name="fit_relation[]" placeholder="Relationship" class="form-control" required></div></div></div><div class="col-sm-4"><div class="form-group form-float"><div class="form-line"><input type="text"  name="fit_location[]" placeholder="Location" class="form-control" required></div></div></div><div class="col-sm-2"> <button type="button" class="btn btn-danger btn-delete btn-block" >Delete</button></div></div>';
                 $('.fit_container').append(html);
             })
 
@@ -637,7 +637,7 @@
             $(document).on('click', '.btn-tambah-domestic', function(e) {
                 e.preventDefault()
                 let html =
-                    '<div class="domestic"><div class="col-sm-3"><div class="form-group form-float"><div class="form-line"><input type="text" id="domestic_masa_kerja[]" name="domestic_masa_kerja[]"class="form-control" placeholder="Masa Kerja" required></div></div></div><div class="col-sm-3"><div class="form-group form-float"><div class="form-line"><input type="text" id="domestic_wilayah_kerja[]" name="domestic_wilayah_kerja[]"class="form-control" placeholder="Wilayah Kerja" required></div></div></div><div class="col-sm-4"><div class="form-group form-float"><div class="form-line"><input type="text" id="domestic_desc_kerja[]" name="domestic_desc_kerja[]"class="form-control" placeholder="Deskripsi Pekerjaan" required></div></div></div><div class="col-sm-2"><button type="button" class="btn btn-danger btn-delete-domestic btn-block">Hapus</button></div></div>';
+                    '<div class="domestic"><div class="col-sm-3"><div class="form-group form-float"><div class="form-line"><input type="text" id="domestic_masa_kerja[]" name="domestic_masa_kerja[]"class="form-control" placeholder="Period" required></div></div></div><div class="col-sm-3"><div class="form-group form-float"><div class="form-line"><input type="text" id="domestic_wilayah_kerja[]" name="domestic_wilayah_kerja[]"class="form-control" placeholder="Working Area" required></div></div></div><div class="col-sm-4"><div class="form-group form-float"><div class="form-line"><input type="text" id="domestic_desc_kerja[]" name="domestic_desc_kerja[]"class="form-control" placeholder="Jobdesc" required></div></div></div><div class="col-sm-2"><button type="button" class="btn btn-danger btn-delete-domestic btn-block">Delete</button></div></div>';
                 $('.domestic_container').append(html);
             })
 
@@ -649,7 +649,7 @@
             $(document).on('click', '.btn-tambah-overseas', function(e) {
                 e.preventDefault()
                 let html =
-                    '<div class="overseas"><div class="col-sm-3"><div class="form-group form-float"><div class="form-line"><input type="text" id="overseas_masa_kerja[]" name="overseas_masa_kerja[]"class="form-control" placeholder="Masa Kerja" required></div></div></div><div class="col-sm-3"><div class="form-group form-float"><div class="form-line"><input type="text" id="overseas_wilayah_kerja[]" name="overseas_wilayah_kerja[]"class="form-control" placeholder="Wilayah Kerja" required></div></div></div><div class="col-sm-4"><div class="form-group form-float"><div class="form-line"><input type="text" id="overseas_desc_kerja[]" name="overseas_desc_kerja[]"class="form-control" placeholder="Deskripsi Pekerjaan" required></div></div></div><div class="col-sm-2"><button type="button" class="btn btn-danger btn-delete-overseas btn-block">Hapus</button></div></div>';
+                    '<div class="overseas"><div class="col-sm-3"><div class="form-group form-float"><div class="form-line"><input type="text" id="overseas_masa_kerja[]" name="overseas_masa_kerja[]"class="form-control" placeholder="Period" required></div></div></div><div class="col-sm-3"><div class="form-group form-float"><div class="form-line"><input type="text" id="overseas_wilayah_kerja[]" name="overseas_wilayah_kerja[]"class="form-control" placeholder="Working Area" required></div></div></div><div class="col-sm-4"><div class="form-group form-float"><div class="form-line"><input type="text" id="overseas_desc_kerja[]" name="overseas_desc_kerja[]"class="form-control" placeholder="Jobdesc" required></div></div></div><div class="col-sm-2"><button type="button" class="btn btn-danger btn-delete-overseas btn-block">Delete</button></div></div>';
                 $('.overseas_container').append(html);
             })
 

@@ -2,8 +2,8 @@
 @section('content')
     <div class="container-fluid d-flex justify-content-between">
         <div class="block-header">
-            <h1> {{ isset($data) ? 'Edit' : 'Tambah' }} Kategori File</h1>
-            <small> {{ isset($data) ? 'Edit' : 'Tambah' }} Data Kategori File dengan mengisikan form disini !</small>
+            <h1> {{ isset($data) ? 'Update' : 'Add' }} Category File</h1>
+            <small> {{ isset($data) ? 'Update' : 'Add' }} File Category Data by filling in the form here!</small>
         </div>
         @if (session()->has('success'))
             <div class="alert alert-success">
@@ -21,13 +21,13 @@
                     <div class="header row">
                         <div class="col-md-10">
                             <h2>
-                                {{ isset($data) ? 'Edit' : 'Tambah' }} Data Kategori File
-                                <small>{{ isset($data) ? 'Edit' : 'Tambah' }} Data Kategori File pada form dibawah ini !</small>
+                                {{ isset($data) ? 'Update' : 'Add' }} Category File
+                                <small>{{ isset($data) ? 'Update' : 'Add' }} File Category Data in the form below!</small>
                             </h2>
                         </div>
                         <div class="col-md-2">
                             <a href="{{ route('category_files.index') }}" class="btn btn-danger btn-block" name="tambah"
-                                id="tambah">Data Kategori File</a>
+                                id="tambah">Category File</a>
                         </div>
                     </div>
                     <div class="body">
@@ -41,7 +41,7 @@
                                         <div class="form-line @error('category_files') error @enderror">
                                             <input type="text" id="category_files" name="category_files"
                                                 value="{{ isset($data) ? $data->category_files : old('category_files') }}" class="form-control">
-                                            <label class="form-label">Kategori</label>
+                                            <label class="form-label">Category</label>
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <button type="submit" class="btn btn-primary" id="submit"
-                                        class="submit">Simpan</button>
+                                        class="submit">Save</button>
                                 </div>
                             </div>
                         </form>

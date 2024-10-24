@@ -2,8 +2,8 @@
 @section('content')
     <div class="container-fluid d-flex justify-content-between">
         <div class="block-header">
-            <h1> {{ isset($data) ? 'Edit' : 'Tambah' }} Selected Information</h1>
-            <small> {{ isset($data) ? 'Edit' : 'Tambah' }} Data Selected Information dengan mengisikan form disini !</small>
+            <h1> {{ isset($data) ? 'Update' : 'Add' }} Selected Information</h1>
+            <small> {{ isset($data) ? 'Update' : 'Add' }} Selected Information by filling in the form here!</small>
         </div>
         @if (session()->has('success'))
             <div class="alert alert-success">
@@ -21,14 +21,13 @@
                     <div class="header row">
                         <div class="col-md-10">
                             <h2>
-                                {{ isset($data) ? 'Edit' : 'Tambah' }} Data Selected Information
-                                <small>{{ isset($data) ? 'Edit' : 'Tambah' }} Data Selected Information pada form dibawah
-                                    ini !</small>
+                                {{ isset($data) ? 'Update' : 'Add' }} Selected Information
+                                <small>{{ isset($data) ? 'Update' : 'Add' }} Selected Information in the form below!</small>
                             </h2>
                         </div>
                         <div class="col-md-2">
                             <a href="{{ route('selected_information.index') }}" class="btn btn-danger btn-block"
-                                name="tambah" id="tambah">Semua Data</a>
+                                name="tambah" id="tambah">All Data</a>
                         </div>
                     </div>
                     <div class="body">
@@ -56,7 +55,7 @@
                                             <input type="text" id="nomor_paspor" name="nomor_paspor"
                                                 value="{{ isset($data) ? $data->nomor_paspor : old('nomor_paspor') }}"
                                                 class="form-control">
-                                            <label class="form-label">Nomor Paspor</label>
+                                            <label class="form-label">Paspor</label>
                                         </div>
                                     </div>
                                 </div>
@@ -78,7 +77,7 @@
                                             <input type="text" id="nama_inggris" name="nama_inggris"
                                                 value="{{ isset($data) ? $data->nama_inggris : old('nama_inggris') }}"
                                                 class="form-control">
-                                            <label class="form-label">Nama Inggris</label>
+                                            <label class="form-label">English Name</label>
                                         </div>
                                     </div>
                                 </div>
@@ -365,7 +364,7 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <button type="submit" class="btn btn-primary" id="submit"
-                                        class="submit">Simpan</button>
+                                        class="submit">Save</button>
                                 </div>
                             </div>
                         </form>

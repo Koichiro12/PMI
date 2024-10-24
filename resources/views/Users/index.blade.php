@@ -2,8 +2,8 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h1>Pengguna</h1>
-            <small>Data Pengguna yang sudah terdaftar akan muncul disini !</small>
+            <h1>Users</h1>
+            <small>Registered users will appear here!</small>
         </div>
         @if (session()->has('success'))
         <div class="alert alert-success">
@@ -21,12 +21,12 @@
                     <div class="header row">
                         <div class="col-md-10">
                             <h2>
-                                Data Pengguna
-                                <small>Data Pengguna saat ini</small>
+                                Users
+                                <small>Current Users</small>
                             </h2>
                         </div>
                         <div class="col-md-2">
-                            <a href="{{route('pengguna.create')}}" class="btn btn-primary btn-block">Tambah</a>
+                            <a href="{{route('pengguna.create')}}" class="btn btn-primary btn-block">Add</a>
                         </div>
 
                     </div>
@@ -35,12 +35,12 @@
                             <table class="table" id="tbl_list">
                                 <thead>
                                     <th>No</th>
-                                    <th>Foto</th>
-                                    <th>Nama</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
                                     <th>Email</th>
                                     <th>Username</th>
                                     <th>Role</th>
-                                    <th>Aksi</th>
+                                    <th>Action</th>
                                 </thead>
                             </table>
                         </div>
@@ -96,7 +96,7 @@
                         name: "id",
                         render: function(data, type, row, meta) {
                             let id = data;
-                            return '<form action="{!! url()->current() . "/'+id+'" !!}" method="POST" enctype="multipart/form-data"> @csrf @method('DELETE') <a href="{!! url()->current() . "/'+id+'/edit" !!}" class="btn btn-warning" name="edit" id="edit" >edit</a><button type="submit" onclick="confirmDelete(event,this)" class="btn btn-danger">hapus</button></form>';
+                            return '<form action="{!! url()->current() . "/'+id+'" !!}" method="POST" enctype="multipart/form-data"> @csrf @method('DELETE') <a href="{!! url()->current() . "/'+id+'/edit" !!}" class="btn btn-warning" name="edit" id="edit" >Update</a><button type="submit" onclick="confirmDelete(event,this)" class="btn btn-danger">Delete</button></form>';
                         }
                     },
                 ]

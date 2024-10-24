@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="block-header">
             <h1>Profile</h1>
-            <small>Profile Pengguna anda akan muncul disini !</small>
+            <small>Your User Profile will appear here!</small>
         </div>
         @if (session()->has('success'))
             <div class="alert alert-success">
@@ -20,8 +20,8 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                            Profile Pengguna
-                            <small>Profile anda sebagai pengguna</small>
+                            Profile
+                            <small>Your profile as a user</small>
                         </h2>
 
                     </div>
@@ -39,7 +39,7 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tr>
-                                    <td width="25%">Nama</td>
+                                    <td width="25%">Name</td>
                                     <td>: {{ $data->name }}</td>
                                 </tr>
                                 <tr>
@@ -69,7 +69,7 @@
                     <div class="header">
                         <h2>
                             Update Profile
-                            <small>Form update profile anda sebagai pengguna</small>
+                            <small>Form to update your profile as a user</small>
                         </h2>
                     </div>
                     <div class="body">
@@ -126,7 +126,7 @@
                                 </div>
                             </div>
                             <div class="m-t-15 d-flex">
-                                <button type="submit" class="btn btn-primary form-confirm">Simpan</button>
+                                <button type="submit" class="btn btn-primary form-confirm">Save</button>
                             </div>
 
                         </form>

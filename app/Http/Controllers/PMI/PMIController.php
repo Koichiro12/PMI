@@ -31,7 +31,7 @@ class PMIController extends Controller
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="largeModalLabel">Berkas</h4>
+                            <h4 class="modal-title" id="largeModalLabel">Files</h4>
                         </div>
                         <div class="modal-body">
                             <div class="table-responsive">
@@ -39,19 +39,19 @@ class PMIController extends Controller
                             <thead>
                             
                                 <th>No</th>
-                                <th>Kategori Berkas</th>
-                                <th>Aksi</th>
+                                <th>Category File</th>
+                                <th>Action</th>
                             </thead>
                             <tbody>
 
                             
                           ';
                     foreach($categoryBerkas as $cb){
-                        $defaultResult = ' <span class="badge bg-danger">File Belum Diupload</span>';
+                        $defaultResult = ' <span class="badge bg-danger">Not Uploaded</span>';
                         if(isset($pmiFiles)){
                             foreach($pmiFiles as $pf){
                                 if($pf->file_categories_id == $cb->id){
-                                    $defaultResult = '<a href="'.asset('uploads/'.$pf->file).'" class="btn btn-info m-2" name="berkas" id="berkas" target="_blank">Download</a><a href="'.route('pmi_files.delete',$pf->id).'" class="btn btn-danger m-2 " onClick="confirmAButton(event,this)" name="berkas" id="berkas">Hapus</a>';
+                                    $defaultResult = '<a href="'.asset('uploads/'.$pf->file).'" class="btn btn-info m-2" name="berkas" id="berkas" target="_blank">Download</a><a href="'.route('pmi_files.delete',$pf->id).'" class="btn btn-danger m-2 " onClick="confirmAButton(event,this)" name="berkas" id="berkas">Delete</a>';
                                 }
                             }
                         }
@@ -65,12 +65,12 @@ class PMIController extends Controller
                 $result .= '</tbody></table></div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>';
-                $result .= '<a href="#" class="btn btn-primary btn-block m-2" data-toggle="modal" data-target="#modalBerkas-'.$biodata->id.'" name="berkas" id="berkas" >Berkas</a>';
+                $result .= '<a href="#" class="btn btn-primary btn-block m-2" data-toggle="modal" data-target="#modalBerkas-'.$biodata->id.'" name="berkas" id="berkas" >Files</a>';
                 
                 return $result; 
             })
@@ -111,9 +111,9 @@ class PMIController extends Controller
                     ]);
                 }
             }
-            return redirect()->route('pmi.index')->with('success','Input Data Berhasil');
+            return redirect()->route('pmi.index')->with('success','Update Data Successfully');
         }
-        return redirect()->back()->with('error','Input Data Gagal, Silahkan coba lagi beberapa saat lagi !');
+        return redirect()->back()->with('error','Update Data Failed, Please try again in a few moments!');
     
     }
     public function deleteFile(string $id){
@@ -122,7 +122,7 @@ class PMIController extends Controller
             unlink($this->defaultUploadsDirectory.'/'.$data->file);
         }
         $data->delete();
-        return redirect()->route('pmi.index')->with('success','Hapus Data Berhasil');
+        return redirect()->route('pmi.index')->with('success','Delete Data Successfully');
     }
 
 }

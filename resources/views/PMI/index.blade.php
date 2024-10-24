@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="block-header">
             <h1>PMI</h1>
-            <small>Data PMI yang sudah di input akan muncul disini !</small>
+            <small>The PMI data that has been input will appear here!</small>
         </div>
         @if (session()->has('success'))
         <div class="alert alert-success">
@@ -22,7 +22,7 @@
                      <div class="col-md-12">
                          <h2>
                              Data PMI
-                             <small>Data PMI saat ini</small>
+                             <small>Data PMI now !</small>
                          </h2>
                      </div>
                                    
@@ -32,14 +32,14 @@
                          <table class="table" id="tbl_list">
                              <thead>
                                  <th>No</th>
-                                 <th>Kode</th>
-                                 <th>Foto</th>
-                                 <th>Nama</th>
-                                 <th>Tempat Lahir</th>
-                                 <th>Tanggal Lahir</th>
+                                 <th>Code</th>
+                                 <th>Image</th>
+                                 <th>Name</th>
+                                 <th>Place of birth</th>
+                                 <th>Date Birth</th>
                                  <th>L/P</th>
-                                 <th>Berkas</th>
-                                 <th>Aksi</th>
+                                 <th>Files</th>
+                                 <th>Action</th>
                              </thead>
                              <tbody></tbody>
                          </table>
@@ -106,7 +106,7 @@
                     name: "id",
                     render: function(data, type, row, meta) {
                         let id = data;
-                        return '<a href="{!! url()->current() . "/'+data+'/edit" !!}" class="btn btn-warning btn-block m-2" name="edit" id="edit" >edit</a>';
+                        return '<a href="{!! url()->current() . "/'+data+'/edit" !!}" class="btn btn-warning btn-block m-2" name="edit" id="edit" >Update</a>';
                     }
                 },
             ]

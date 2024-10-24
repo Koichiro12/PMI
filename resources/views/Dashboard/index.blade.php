@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="block-header">
             <h1>DASHBOARD</h1>
-            <small>Selamat Datang {{ auth()->user()->name }}, Ada yang bisa dibantu ?</small>
+            <small>Welcome {{ auth()->user()->name }}, Anything I can help ?</small>
         </div>
 
         <!-- Widgets -->
@@ -28,7 +28,7 @@
                             <i class="material-icons">group</i>
                         </div>
                         <div class="content">
-                            <div class="text">Pengguna</div>
+                            <div class="text">Users</div>
                             <div class="number count-to" data-from="0" data-to="{{ $pengguna }}" data-speed="1000"
                                 data-fresh-interval="20"></div>
                         </div>

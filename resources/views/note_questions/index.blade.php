@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="block-header">
             <h1>Note Questions</h1>
-            <small>Data Note Questions yang sudah di input akan muncul disini !</small>
+            <small>Question Note Data that has been entered will appear here!</small>
         </div>
         @if (session()->has('success'))
         <div class="alert alert-success">
@@ -21,12 +21,12 @@
                  <div class="header row">
                      <div class="col-md-10">
                          <h2>
-                             Data Note Questions
-                             <small>Data Note Questions saat ini</small>
+                             Note Questions
+                             <small>Note Questions Now</small>
                          </h2>
                      </div>
                      <div class="col-md-2">
-                        <a href="{{route('questions.create')}}" class="btn btn-primary btn-block" name="tambah" id="tambah" >Tambah</a>
+                        <a href="{{route('questions.create')}}" class="btn btn-primary btn-block" name="tambah" id="tambah" >Add</a>
                     </div>         
                                    
                  </div>
@@ -37,7 +37,7 @@
                                  <th>No</th>
                                  <th>Type</th>
                                  <th>Note Question</th>
-                                 <th>Aksi</th>
+                                 <th>Action</th>
                              </thead>
                             <tbody>
 
@@ -78,7 +78,7 @@
                     name: "id",
                     render: function(data, type, row, meta) {
                         let id = data;
-                        return '<form action="{!! url()->current() . "/'+id+'" !!}" method="POST" enctype="multipart/form-data"> @csrf @method('DELETE')<a href="{!! url()->current() . "/'+id+'/edit" !!}" class="btn btn-warning btn-block m-2" name="edit" id="edit" >edit</a><button type="submit" onclick="confirmDelete(event,this)" class="btn btn-danger btn-block m-2">hapus</button></form>';
+                        return '<form action="{!! url()->current() . "/'+id+'" !!}" method="POST" enctype="multipart/form-data"> @csrf @method('DELETE')<a href="{!! url()->current() . "/'+id+'/edit" !!}" class="btn btn-warning btn-block m-2" name="edit" id="edit" >Update</a><button type="submit" onclick="confirmDelete(event,this)" class="btn btn-danger btn-block m-2">Delete</button></form>';
                     }
                 }
             ]

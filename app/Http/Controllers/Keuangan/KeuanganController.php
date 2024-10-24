@@ -66,7 +66,7 @@ class KeuanganController extends Controller
             }
 
         }
-        return redirect()->back()->with('success', "Update Data Berhasil");
+        return redirect()->back()->with('success', "Update Data Successfully");
 
     }
 
@@ -86,7 +86,7 @@ class KeuanganController extends Controller
             'payment' => ['required'],
        ]);
        if($validate->fails()){
-        return redirect()->back()->withErrors($validate)->with('error',"Input Data Gagal, Silahkan Cek kembali inputan anda !")->withInput();
+        return redirect()->back()->withErrors($validate)->with('error',"Data Input Failed, Please Check Your Input Again!")->withInput();
        }
        $foto = '-';
        if($request->hasFile('buktis') && $request->file('buktis')->isValid()){
@@ -98,9 +98,9 @@ class KeuanganController extends Controller
        $request['bukti'] = $foto;
        $insert = Payment::insertData($request,['buktis']);
        if($insert){
-        return redirect()->back()->with('success',"Input Data Berhasil !");
+        return redirect()->back()->with('success',"Data Input Successful!");
        }
-       return redirect()->back()->with('error',value: 'Input Data Gagal, Silahkan coba lagi beberapa saat lagi !');
+       return redirect()->back()->with('error',value: 'Data Input Failed, Please Check Your Input Again!');
     }
     public function UpdatePayment(Request $request,string $id){
         $this->RolesAllowed(['Administrator']);
@@ -109,7 +109,7 @@ class KeuanganController extends Controller
             'payment' => ['required'],
        ]);
        if($validate->fails()){
-        return redirect()->back()->withErrors($validate)->with('error',"Input Data Gagal, Silahkan Cek kembali inputan anda !")->withInput();
+        return redirect()->back()->withErrors($validate)->with('error',"Data Input Failed, Please Check Your Input Again!")->withInput();
        }
        $oldData = Payment::findOrFail($id);
        $foto = $oldData->bukti;
@@ -122,9 +122,9 @@ class KeuanganController extends Controller
        $request['bukti'] = $foto;
        $update = Payment::updateData($id,$request,['buktis']);
        if($update){
-        return redirect()->back()->with('success',"Update Data Berhasil !");
+        return redirect()->back()->with('success',"Update Data Successfully !");
        }
-       return redirect()->back()->with('error',value: 'Update Data Gagal, Silahkan coba lagi beberapa saat lagi !');
+       return redirect()->back()->with('error',value: 'Data Update Failed, Please try again in a few moments!');
     }
     public function DestroyPayment(string $id){
         $this->RolesAllowed(['Administrator']);
@@ -133,7 +133,7 @@ class KeuanganController extends Controller
             unlink($this->defaultUploadsDirectory.'/'.$data->bukti);
         }
         $data->delete();
-        return redirect()->back()->with('success','Hapus Data Berhasil');
+        return redirect()->back()->with('success','Delete Data Successfully');
     }
 
     public function PaymentList(Request $request, string $id = null)
@@ -153,7 +153,7 @@ class KeuanganController extends Controller
                 })
                 ->addColumn('note_or_bukti', function ($p) {
                     $result = '';
-                    $result .= $p->bukti != null && $p->bukti != "-" ? '<a href="' . asset('uploads/' . $p->bukti) . '" class="btn btn-sm btn-block btn-primary" target="_blank">Lihat Bukti </a>' : '<span class="badge bg-red">Tidak Tersedia</span>';
+                    $result .= $p->bukti != null && $p->bukti != "-" ? '<a href="' . asset('uploads/' . $p->bukti) . '" class="btn btn-sm btn-block btn-primary" target="_blank">View Proof </a>' : '<span class="badge bg-red">Not Available</span>';
                     $result .= '<hr>';
                     $result .= '<b>*Note</b><br>';
                     $result .= $p->note;
@@ -166,10 +166,10 @@ class KeuanganController extends Controller
                             $result = '<span class="badge bg-yellow">Pending</span>';
                             break;
                         case '1':
-                            $result = '<span class="badge bg-green">Sukses</span>';
+                            $result = '<span class="badge bg-green">Success</span>';
                             break;
                         case '2':
-                            $result = '<span class="badge bg-red">Gagal / Cancel</span>';
+                            $result = '<span class="badge bg-red">Fail / Cancel</span>';
                             break;
                     }
                     return $result;
@@ -183,8 +183,8 @@ class KeuanganController extends Controller
                                     <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="largeModalLabel">Edit Payment</h4>
-                                                <small>Tambah pembayaran melalui form di sini !</small>
+                                                <h4 class="modal-title" id="largeModalLabel">Update Payment</h4>
+                                                <small>Update payments via the form here!</small>
                                             </div>
                                             <form action="'.route('keuangan_detail.update',$p->id).'" method="POST" enctype="multipart/form-data">
                                             <input type="hidden" name="_method" value="PUT">
@@ -196,11 +196,11 @@ class KeuanganController extends Controller
                         <div class="form-group form-float">
                             <div class="form-line @error("payment_categories_id") error focused @enderror">
                                 <p>
-                                    Kategori
+                                    Category Payment
                                 </p>
                                 <select name="payment_categories_id" id="payment_categories_id"
                                     class="form-control show-tick" disabled>
-                                    <option value="">-- Pilih Kategori --</option>';
+                                    <option value="">-- Choose Category --</option>';
                                     foreach($biodata->PaymentAmount as $item){
                                         $terbayar = 0;
                                         foreach ($biodata->Payment as $p) {
@@ -239,7 +239,7 @@ class KeuanganController extends Controller
                                 <div class="form-group form-float">
                                     <div class="form-line @error("payment") error focused @enderror">
                                     <p>
-                                        Bayar
+                                        Amount
                                     </p>
                                         <input type="number" id="payment" 
                                             name="payment"class="form-control" placeholder="Bayar" value="'.$p->payment.'" required>
@@ -250,7 +250,7 @@ class KeuanganController extends Controller
                                 <div class="form-group form-float">
                                     <div class="form-line @error("bukti") error focused @enderror">
                                         <small>
-                                            Bukti Pembayaran <b>* Optional</b>
+                                            Proof of Payment <b>* Optional</b>
                                         </small>
                                         <input type="file" id="buktis" accept="image/*,image/png,image/jpeg,image/jpg"
                                             name="buktis"class="form-control">
@@ -282,9 +282,9 @@ class KeuanganController extends Controller
                                             <option value="0" '.$pendingSelected.'>
                                                 Pending</option>
                                             <option value="1" '.$suksesSelected.'>
-                                                Sukses</option>
+                                                Success</option>
                                             <option value="2" '.$cancelSelected.'>
-                                                Gagal / Cancel</option>
+                                                Fail / Cancel</option>
                                         </select>
 
                                     </div>
@@ -304,8 +304,8 @@ class KeuanganController extends Controller
             $result .= ' <form action="'.route('keuangan_detail.delete',$p->id).'" method="POST" enctype="multipart/form-data"> 
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="_token" value="'. csrf_token() .'" />';
-            $result .= '<a href="#" class="btn btn-warning btn-block m-2" data-toggle="modal" data-target="#modalEditPayment-' . $p->id . '" name="detail" id="detail" >Edit</a>';
-            $result .= ' <button type="submit" class="btn btn-danger btn-block form-confirm" onclick="confirmDelete(event,this)">Hapus</button>';
+            $result .= '<a href="#" class="btn btn-warning btn-block m-2" data-toggle="modal" data-target="#modalEditPayment-' . $p->id . '" name="detail" id="detail" >Update</a>';
+            $result .= ' <button type="submit" class="btn btn-danger btn-block form-confirm" onclick="confirmDelete(event,this)">Delete</button>';
             $result .= ' </form>';
             return $result;
                 })

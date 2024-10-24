@@ -29,7 +29,7 @@ class QuestionsController extends Controller
             $query = Questions::all();
             return DataTables::of($query)
             ->addColumn('type_questions',function($question){
-                $result = '<span class="badge bg-primary">Pilihan Ganda</span>';
+                $result = '<span class="badge bg-primary">Multiple Choice</span>';
                 if($question->type_question == 1){
                     $result = '<span class="badge bg-primary">Essay</span>';
                 }
@@ -72,9 +72,9 @@ class QuestionsController extends Controller
                 ]);
             }
            }
-           return redirect()->route('questions.index')->with('success',"Input Data Berhasil");
+           return redirect()->route('questions.index')->with('success',"Data Input Successful");
         }
-        return redirect()->back()->with('error','Input Data Gagal, Silahkan coba lagi beberapa saat lagi !');
+        return redirect()->back()->with('error','Data Input Failed, Please try again in a few moments!');
     }
 
     /**
@@ -120,9 +120,9 @@ class QuestionsController extends Controller
                 ]);
             }
            }
-           return redirect()->route('questions.index')->with('success',"Update Data Berhasil");
+           return redirect()->route('questions.index')->with('success',"Data Update Successful");
         }
-        return redirect()->back()->with('error','Update Data Gagal, Silahkan coba lagi beberapa saat lagi !');
+        return redirect()->back()->with('error','Data Update Failed, Please try again in a few moments!');
     }
 
     /**
@@ -134,6 +134,6 @@ class QuestionsController extends Controller
         $oldData = Questions::findOrFail($id);
         Options::where('questions_id','=',$id)->delete();
         $oldData->delete();
-        return redirect()->back()->with('success','Hapus Data Berhasil');
+        return redirect()->back()->with('success','Delete Data Successfully');
     }
 }

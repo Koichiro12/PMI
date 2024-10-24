@@ -71,7 +71,7 @@
                      <li {!! url()->current() == route('category_files.index') || str_contains(url()->current(), 'category_files')
                          ? 'class="active"'
                          : '' !!}>
-                         <a href="{{ route('category_files.index') }}">Kategori File</a>
+                         <a href="{{ route('category_files.index') }}">Category File</a>
                      </li>
                      <li {!! url()->current() == route('pmi.index') || str_contains(url()->current(), 'PMI') ? 'class="active"' : '' !!}>
                          <a href="{{ route('pmi.index') }}">PMI</a>
@@ -88,18 +88,18 @@
                      : '' !!}>
                      <a href="#" class="menu-toggle">
                          <i class="material-icons">payments</i>
-                         <span>Keuangan</span>
+                         <span>Payment</span>
                      </a>
                      <ul class="ml-menu">
                          <li {!! url()->current() == route('category_payment.index') || str_contains(url()->current(), 'category_payment')
                              ? 'class="active"'
                              : '' !!}>
-                             <a href="{{ route('category_payment.index') }}">Kategori Pembayaran</a>
+                             <a href="{{ route('category_payment.index') }}">Payment Category</a>
                          </li>
                          <li {!! url()->current() == route('keuangan.index') || str_contains(url()->current(), 'Keuangan')
                              ? 'class="active"'
                              : '' !!}>
-                             <a href="{{ route('keuangan.index') }}">Pembayaran</a>
+                             <a href="{{ route('keuangan.index') }}">Payment</a>
                          </li>
 
                      </ul>
@@ -121,7 +121,7 @@
                  : '' !!}>
                  <a href="{{ route('pengguna.index') }}">
                      <i class="material-icons">group</i>
-                     <span>Pengguna</span>
+                     <span>Users</span>
                  </a>
              </li>
              <li>

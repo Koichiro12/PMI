@@ -2,8 +2,8 @@
 @section('content')
     <div class="container-fluid d-flex justify-content-between">
         <div class="block-header">
-            <h1> {{ isset($data) ? 'Edit' : 'Tambah' }} Note Questions</h1>
-            <small> {{ isset($data) ? 'Edit' : 'Tambah' }} Data Note Questions File dengan mengisikan form disini !</small>
+            <h1> {{ isset($data) ? 'Update' : 'Add' }} Note Questions</h1>
+            <small> {{ isset($data) ? 'Update' : 'Add' }} Data Note Questions by filling in the form here !</small>
         </div>
         @if (session()->has('success'))
             <div class="alert alert-success">
@@ -21,8 +21,8 @@
                     <div class="header row">
                         <div class="col-md-10">
                             <h2>
-                                {{ isset($data) ? 'Edit' : 'Tambah' }} Data Note Questions
-                                <small>{{ isset($data) ? 'Edit' : 'Tambah' }} Data Note Questions pada form dibawah ini
+                                {{ isset($data) ? 'Update' : 'Add' }} Data Note Questions
+                                <small>{{ isset($data) ? 'Update' : 'Add' }} Data Note Questions in the form below
                                     !</small>
                             </h2>
                         </div>
@@ -43,7 +43,7 @@
                                             <select name="type_question" id="type_question" class="form-control show-tick">
                                                 <option value="0"
                                                     {{ isset($data) && $data->type_question == '0' ? 'selected' : '' }}>
-                                                    Pilihan Ganda</option>
+                                                    Multiple Choice</option>
                                                 <option value="1"
                                                     {{ isset($data) && $data->type_question == '1' ? 'selected' : '' }}>
                                                     Essay
@@ -64,7 +64,7 @@
                                 <div class="option-container">
                                     <div class="col-md-10"><small>Option</small></div>
                                     <div class="col-sm-2"><button
-                                            type="button"class="btn btn-primary btn-block btn-tambah-option">Tambah</button>
+                                            type="button"class="btn btn-primary btn-block btn-tambah-option">Add</button>
                                     </div>
                                     <div class="options">
                                         @if (isset($data) && $data->Options()->count() > 0)
@@ -81,7 +81,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-2"><button
-                                                            type="button"class="btn btn-danger btn-delete-option btn-block">Hapus</button>
+                                                            type="button"class="btn btn-danger btn-delete-option btn-block">Delete</button>
                                                     </div>
                                                 </div>
                                             @endforeach
@@ -90,7 +90,7 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <button type="submit" class="btn btn-primary" id="submit"
-                                        class="submit">Simpan</button>
+                                        class="submit">Save</button>
                                 </div>
                             </div>
                         </form>
@@ -112,7 +112,7 @@
                 var val = this.value
                 if (val == '0') {
                     $('.option-container').html(
-                        '<div class="col-md-10"><small>Option</small></div><div class="col-sm-2"><button type="button"class="btn btn-primary btn-block btn-tambah-option">Tambah</button></div><div class="options"></div>'
+                        '<div class="col-md-10"><small>Option</small></div><div class="col-sm-2"><button type="button"class="btn btn-primary btn-block btn-tambah-option">Add</button></div><div class="options"></div>'
                     );
                 }
                 if (val == '1') {
@@ -121,7 +121,7 @@
             });
             $(document).on('click', '.btn-tambah-option', function(e) {
                 $('.options').append(
-                    '<div class="option"><div class="col-sm-10"><div class="col-sm-12"><div class="form-group form-float"><div class="form-line"><input id="option[]" name="option[]" class="form-control" type="text" placeholder="Option"/></div></div></div></div><div class="col-sm-2"><button type="button"class="btn btn-danger btn-delete-option btn-block">Hapus</button></div></div>'
+                    '<div class="option"><div class="col-sm-10"><div class="col-sm-12"><div class="form-group form-float"><div class="form-line"><input id="option[]" name="option[]" class="form-control" type="text" placeholder="Option"/></div></div></div></div><div class="col-sm-2"><button type="button"class="btn btn-danger btn-delete-option btn-block">Delete</button></div></div>'
                 )
             });
             $(document).on('click', '.btn-delete-option', function(e) {

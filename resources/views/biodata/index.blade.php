@@ -3,7 +3,7 @@
     <div class="container-fluid d-flex justify-content-between">
         <div class="block-header">
             <h1>Biodata</h1>
-            <small>Data Biodata yang sudah di input akan muncul disini !</small>
+            <small>The biodata that has been entered will appear here!</small>
         </div>
         @if (session()->has('success'))
         <div class="alert alert-success">
@@ -21,12 +21,12 @@
                 <div class="header row">
                     <div class="col-md-10">
                         <h2>
-                            Data Biodata
-                            <small>Data biodata saat ini</small>
+                            Biodata
+                            <small>Biodata Now !</small>
                         </h2>
                     </div>
                     <div class="col-md-2">
-                        <a href="{{route('biodata.create')}}" class="btn btn-primary btn-block" name="tambah" id="tambah" >Tambah</a>
+                        <a href="{{route('biodata.create')}}" class="btn btn-primary btn-block" name="tambah" id="tambah" >Add</a>
                     </div>                   
                 </div>
                 <div class="body">
@@ -34,16 +34,16 @@
                         <table class="table" id="tbl_list">
                             <thead>
                                 <th>No</th>
-                                <th>Kode</th>
-                                <th>Foto</th>
-                                <th>Nama</th>
-                                <th>Tempat Lahir</th>
-                                <th>Tanggal Lahir</th>
+                                <th>Code</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Place Of Birth</th>
+                                <th>Date Birt</th>
                                 <th>L/P</th>
-                                <th>Kewarganegaraan</th>
-                                <th>Pendidikan</th>
-                                <th>Bahasa</th>
-                                <th>Aksi</th>
+                                <th>Citizenship</th>
+                                <th>Education</th>
+                                <th>Language</th>
+                                <th>Action</th>
                             </thead>
                         </table>
                     </div>
@@ -115,7 +115,7 @@
                         name: "id",
                         render: function(data, type, row, meta) {
                             let id = data;
-                            return '<form action="{!! url()->current() . "/'+id+'" !!}" method="POST" enctype="multipart/form-data"> @csrf @method('DELETE') <a href="{!! url()->current() . "/'+id+'/printPdf" !!}" class="btn btn-primary btn-block m-2" name="print_pdf" id="print_pdf" target="_blank" >Print / Download (PDF) </a> <a href="{!! url()->current() . "/'+id+'/edit" !!}" class="btn btn-warning btn-block m-2" name="edit" id="edit" >edit</a><button type="submit" onclick="confirmDelete(event,this)" class="btn btn-danger btn-block m-2">hapus</button></form>';
+                            return '<form action="{!! url()->current() . "/'+id+'" !!}" method="POST" enctype="multipart/form-data"> @csrf @method('DELETE') <a href="{!! url()->current() . "/'+id+'/printPdf" !!}" class="btn btn-primary btn-block m-2" name="print_pdf" id="print_pdf" target="_blank" >Print / Download (PDF) </a> <a href="{!! url()->current() . "/'+id+'/edit" !!}" class="btn btn-warning btn-block m-2" name="edit" id="edit" >Update</a><button type="submit" onclick="confirmDelete(event,this)" class="btn btn-danger btn-block m-2">Delete</button></form>';
                         }
                     },
                 ]

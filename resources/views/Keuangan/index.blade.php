@@ -2,8 +2,8 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h1>Pembayaran</h1>
-            <small>Data Pembayaran yang sudah di input akan muncul disini !</small>
+            <h1>Payment</h1>
+            <small>Payment data that has been entered will appear here!</small>
         </div>
         @if (session()->has('success'))
         <div class="alert alert-success">
@@ -21,8 +21,8 @@
                     <div class="header row">
                         <div class="col-md-12">
                             <h2>
-                                Data Pembayaran
-                                <small>Data Pembayaran saat ini</small>
+                                Payment
+                                <small>Current Payment</small>
                             </h2>
                         </div>
 
@@ -32,14 +32,14 @@
                             <table class="table" id="tbl_list">
                                 <thead>
                                     <th>No</th>
-                                    <th>Kode</th>
-                                    <th>Foto</th>
-                                    <th>Nama</th>
-                                    <th>Tempat Lahir</th>
-                                    <th>Tanggal Lahir</th>
+                                    <th>Code</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Place of birth</th>
+                                    <th>Date birth</th>
                                     <th>L/P</th>
-                                    <th>Biaya</th>
-                                    <th>Aksi</th>
+                                    <th>Cost</th>
+                                    <th>Action</th>
                                 </thead>
                             </table>
                         </div>
@@ -100,7 +100,7 @@
                         name: "id",
                         render: function(data, type, row, meta) {
                             let id = data;
-                            return '<a href="{!! url()->current() . "/'+id+'/Biaya" !!}" class="btn btn-success btn-block m-2" name="set_biaya" id="set_biaya" >Biaya </a>';
+                            return '<a href="{!! url()->current() . "/'+id+'/Biaya" !!}" class="btn btn-success btn-block m-2" name="set_biaya" id="set_biaya" >set Cost </a>';
                         }
                     },
                     {

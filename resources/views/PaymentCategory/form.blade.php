@@ -2,8 +2,8 @@
 @section('content')
     <div class="container-fluid d-flex justify-content-between">
         <div class="block-header">
-            <h1> {{ isset($data) ? 'Edit' : 'Tambah' }} Kategori Pembayaran</h1>
-            <small> {{ isset($data) ? 'Edit' : 'Tambah' }} Data Kategori Pembayaran dengan mengisikan form disini !</small>
+            <h1> {{ isset($data) ? 'Update' : 'Add' }} Payment Category</h1>
+            <small> {{ isset($data) ? 'Update' : 'Add' }} Payment Category Data by filling in the form here!</small>
         </div>
         @if (session()->has('success'))
             <div class="alert alert-success">
@@ -21,13 +21,13 @@
                     <div class="header row">
                         <div class="col-md-10">
                             <h2>
-                                {{ isset($data) ? 'Edit' : 'Tambah' }} Data Kategori Pembayaran
-                                <small>{{ isset($data) ? 'Edit' : 'Tambah' }} Data Kategori Pembayaran pada form dibawah ini !</small>
+                                {{ isset($data) ? 'Update' : 'Add' }} Payment Category
+                                <small>{{ isset($data) ? 'Update' : 'Add' }} Payment Category Data in the form below!</small>
                             </h2>
                         </div>
                         <div class="col-md-2">
                             <a href="{{ route('category_payment.index') }}" class="btn btn-danger btn-block" name="tambah"
-                                id="tambah">Data Kategori </a>
+                                id="tambah">Payment Category </a>
                         </div>
                     </div>
                     <div class="body">
@@ -41,7 +41,7 @@
                                         <div class="form-line @error('payment_category') focused error @enderror">
                                             <input type="text" id="payment_category" name="payment_category"
                                                 value="{{ isset($data) ? $data->payment_category : old('payment_category') }}" class="form-control">
-                                            <label class="form-label">Kategori</label>
+                                            <label class="form-label">Payment Category</label>
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <button type="submit" class="btn btn-primary" id="submit"
-                                        class="submit">Simpan</button>
+                                        class="submit">Save</button>
                                 </div>
                             </div>
                         </form>

@@ -51,7 +51,7 @@ class BiodataController extends Controller
         $validate = \Validator::make($request->all(),[
             'kode_biodata' => ['required'],
             'nama' => ['required'],
-            'tempat_lahir' => ['required'],
+            'tempat_lahir' => ['required'], 
             'tgl_lahir' => ['required'],
             'umur' => ['required'],
             'tb' => ['required'],
@@ -133,9 +133,9 @@ class BiodataController extends Controller
                     ]);
                 }
             }
-            return redirect()->route('biodata.index')->with('success',"Input Data Berhasil");
+            return redirect()->route('biodata.index')->with('success',"Data Input Successful");
         }
-        return redirect()->back()->with('error','Input Data Gagal, Silahkan coba lagi beberapa saat lagi !');
+        return redirect()->back()->with('error','Data Input Failed, Please try again in a few moments!');
     }
 
     /**
@@ -256,9 +256,9 @@ class BiodataController extends Controller
                     ]);
                 }
             }
-            return redirect()->route('biodata.index')->with('success',"Update Data Berhasil");
+            return redirect()->route('biodata.index')->with('success',"Update Data Successful");
         }
-        return redirect()->back()->with('error','Update Data Gagal, Silahkan coba lagi beberapa saat lagi !');
+        return redirect()->back()->with('error','Update Data Failed, Please try again in a few moments!');
    
     }
 
@@ -275,7 +275,7 @@ class BiodataController extends Controller
         BiodataExperience::where('biodata_id','=',$id)->delete();
         BiodataFamilyOverseas::where('biodata_id','=',$id)->delete();
         $oldData->delete();
-        return redirect()->back()->with('success','Hapus Data Berhasil');
+        return redirect()->back()->with('success','Delete Data Successfully');
     }
 
     public function printPdf(string $id){

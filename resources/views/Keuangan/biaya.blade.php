@@ -2,8 +2,8 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h1>Set Biaya</h1>
-            <small>Set biaya dengan mengisi form di bawah ini !</small>
+            <h1>set Cost</h1>
+            <small>Set the cost by filling in the form below!</small>
         </div>
         @if (session()->has('success'))
         <div class="alert alert-success">
@@ -21,12 +21,12 @@
                     <div class="header row">
                         <div class="col-md-10">
                             <h2>
-                                Set Biaya
-                                <small>Form biaya ada di bawah ini !</small>
+                                set Cost
+                                <small>The Cost form is below!</small>
                             </h2>
                         </div>
                         <div class="col-md-2">
-                            <a href="{{route('keuangan.index')}}" class="btn btn-sm btn-danger btn-block">Data Keuangan</a>
+                            <a href="{{route('keuangan.index')}}" class="btn btn-sm btn-danger btn-block">Payment</a>
                         </div>
 
                     </div>
@@ -40,8 +40,8 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Biaya</th>
-                                            <th>Set Biaya</th>
+                                            <th>Cost</th>
+                                            <th>setCost</th>
                                         </tr>
                                     </thead>
                                    <tbody>

@@ -2,8 +2,8 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h1>Kategori Pembayaran</h1>
-            <small>Data Kategori Pembayaran PMI yang sudah di input akan muncul disini !</small>
+            <h1>Payment Category</h1>
+            <small>The PMI Payment Category data that has been input will appear here!</small>
         </div>
         @if (session()->has('success'))
         <div class="alert alert-success">
@@ -21,12 +21,12 @@
                  <div class="header row">
                      <div class="col-md-10">
                          <h2>
-                             Data Kategori Pembayaran
-                             <small>Data Kategori Pembayaran saat ini</small>
+                            Payment Category
+                             <small>Current Payment Category Data</small>
                          </h2>
                      </div>
                      <div class="col-md-2">
-                        <a href="{{route('category_payment.create')}}" class="btn btn-primary btn-block" name="tambah" id="tambah" >Tambah</a>
+                        <a href="{{route('category_payment.create')}}" class="btn btn-primary btn-block" name="tambah" id="tambah" >Add</a>
                     </div>         
                                    
                  </div>
@@ -35,9 +35,9 @@
                          <table class="table" id="tbl_list">
                              <thead>
                                  <th>No</th>
-                                 <th>Kategori Pembayaran</th>
+                                 <th>Payment Category</th>
                                  <th>Status</th>
-                                 <th>Aksi</th>
+                                 <th>Action</th>
                              </thead>
                             
                          </table>
@@ -83,7 +83,7 @@
                     name: "id",
                     render: function(data, type, row, meta) {
                         let id = data;
-                        return '<form action="{!! url()->current() . "/'+id+'" !!}" method="POST" enctype="multipart/form-data"> @csrf @method('DELETE')<a href="{!! url()->current() . "/'+id+'/edit" !!}" class="btn btn-warning btn-block m-2" name="edit" id="edit" >edit</a><button type="submit" onclick="confirmDelete(event,this)" class="btn btn-danger btn-block m-2">hapus</button></form>';
+                        return '<form action="{!! url()->current() . "/'+id+'" !!}" method="POST" enctype="multipart/form-data"> @csrf @method('DELETE')<a href="{!! url()->current() . "/'+id+'/edit" !!}" class="btn btn-warning btn-block m-2" name="edit" id="edit" >Update</a><button type="submit" onclick="confirmDelete(event,this)" class="btn btn-danger btn-block m-2">Delete</button></form>';
                     }
                 },
             ]

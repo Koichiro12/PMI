@@ -2,8 +2,8 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h1>{{ isset($data) ? 'Edit' : 'Tambah' }} Pengguna</h1>
-            <small>{{ isset($data) ? 'Edit' : 'Tambah' }} Data Pengguna dengan mengisikan form disini !</small>
+            <h1>{{ isset($data) ? 'Update' : 'Add' }} User</h1>
+            <small>{{ isset($data) ? 'Update' : 'Add' }} Users by filling in the form here!</small>
         </div>
         @if (session()->has('success'))
             <div class="alert alert-success">
@@ -21,12 +21,12 @@
                     <div class="header row">
                         <div class="col-md-10">
                             <h2>
-                                {{ isset($data) ? 'Edit' : 'Tambah' }} Data Pengguna
-                                <small>{{ isset($data) ? 'Edit' : 'Tambah' }} Data Pengguna pada form dibawah ini !</small>
+                                {{ isset($data) ? 'Update' : 'Add' }} Users
+                                <small>{{ isset($data) ? 'Update' : 'Add' }} User in the form below!</small>
                             </h2>
                         </div>
                         <div class="col-md-2">
-                            <a href="{{ route('pengguna.index') }}" class="btn btn-danger btn-block">Data Pengguna</a>
+                            <a href="{{ route('pengguna.index') }}" class="btn btn-danger btn-block">Users</a>
                         </div>
 
                     </div>
@@ -102,7 +102,7 @@
                                 </div>
                             </div>
                             <div class="m-t-15 d-flex">
-                                <button type="submit" class="btn btn-primary form-confirm">Simpan</button>
+                                <button type="submit" class="btn btn-primary form-confirm">Save</button>
                             </div>
                         </form>
                     </div>

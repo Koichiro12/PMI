@@ -2,8 +2,8 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h1>Detail Pembayaran</h1>
-            <small>Detail Pembayaran akan tampil di bawah ini !</small>
+            <h1>Detail Payment</h1>
+            <small>Payment details will appear below!</small>
         </div>
         @if (session()->has('success'))
             <div class="alert alert-success">
@@ -22,19 +22,19 @@
                         <div class="col-md-10">
                             <h2>
                                 Detail Biodata
-                                <small>Detail Biodata di bawah ini !</small>
+                                <small>Biodata details below!</small>
                             </h2>
                         </div>
                         <div class="col-md-2">
-                            <a href="{{ route('keuangan.index') }}" class="btn btn-sm btn-danger btn-block">Data
-                                Keuangan</a>
+                            <a href="{{ route('keuangan.index') }}" class="btn btn-sm btn-danger btn-block">
+                                Payment</a>
                         </div>
 
                     </div>
                     <div class="body">
                         <div class="row clear-fix">
                             <div class="col-md-6 text-center">
-                                <small>Foto</small>
+                                <small>Image</small>
                                 <br>
                                 <img src="{{ $biodata->foto != '-' ? asset('uploads/' . $biodata->foto) : asset('assets/images/user.png') }}"
                                     width="80%"class="img" id="view_img" alt="User" />
@@ -44,11 +44,11 @@
                                 <div class="table-responsive">
                                     <table class="table">
                                         <tr>
-                                            <td width="15%">Kode</td>
+                                            <td width="15%">Code</td>
                                             <td>: {{ $biodata->kode_biodata }}</td>
                                         </tr>
                                         <tr>
-                                            <td width="15%">Nama</td>
+                                            <td width="15%">Name</td>
                                             <td>: {{ $biodata->nama }}</td>
                                         </tr>
                                         <tr>
@@ -61,7 +61,7 @@
                                             <td>: {{ $biodata->jenis_kelamin }}</td>
                                         </tr>
                                         <tr>
-                                            <td width="15%">Umur</td>
+                                            <td width="15%">Age</td>
                                             <td>: {{ $biodata->umur }}</td>
                                         </tr>
                                         <tr>
@@ -69,11 +69,11 @@
                                             <td>: {{ $biodata->tb }} / {{ $biodata->bb }}</td>
                                         </tr>
                                         <tr>
-                                            <td width="15%">Agama</td>
+                                            <td width="15%">Religion</td>
                                             <td>: {{ $biodata->agama }}</td>
                                         </tr>
                                         <tr>
-                                            <td width="15%">Kewarganegaraan</td>
+                                            <td width="15%">Citizenship</td>
                                             <td>: {{ $biodata->kewarganegaraan }}</td>
                                         </tr>
                                     </table>
@@ -88,8 +88,8 @@
                     <div class="header row">
                         <div class="col-md-10">
                             <h2>
-                                Biaya
-                                <small>Detail Biaya di bawah ini !</small>
+                                Cost
+                                <small>Cost details below!</small>
                             </h2>
                         </div>
                     </div>
@@ -98,10 +98,10 @@
                             <table class="table">
                                 <thead>
                                     <th width="10%">No</th>
-                                    <th>Biaya</th>
-                                    <th>Total Bayar</th>
-                                    <th>Terbayar</th>
-                                    <th>Kurang</th>
+                                    <th>Cost</th>
+                                    <th>Total</th>
+                                    <th>Paid</th>
+                                    <th>underpayment</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($biodata->PaymentAmount as $item)
@@ -136,13 +136,13 @@
                     <div class="header row">
                         <div class="col-md-10">
                             <h2>
-                                Pembayaran
-                                <small>Detail Pembayaran di bawah ini !</small>
+                                Payment
+                                <small>Payment Details below!</small>
                             </h2>
                         </div>
                         <div class="col-md-2">
                             <a href="#" class="btn btn-sm btn-primary btn-block" data-toggle="modal"
-                                data-target="#modalTambah">Tambah</a>
+                                data-target="#modalTambah">Add</a>
                         </div>
                     </div>
                     <div class="body">
@@ -150,13 +150,13 @@
                             <table class="table" id="tbl_list">
                                 <thead>
                                     <th>No</th>
-                                    <th>Tanggal</th>
-                                    <th>Type Bayar</th>
-                                    <th>Biaya</th>
-                                    <th>Total Bayar</th>
-                                    <th>Note / Bukti</th>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Cost</th>
+                                    <th>Paid</th>
+                                    <th>Note / Proof</th>
                                     <th>Status</th>
-                                    <th>Aksi</th>
+                                    <th>Action</th>
                                 </thead>
                             </table>
                         </div>
@@ -168,8 +168,8 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="largeModalLabel">Tambah Pembayaran</h4>
-                        <small>Tambah pembayaran melalui form di sini !</small>
+                        <h4 class="modal-title" id="largeModalLabel">Add Payment</h4>
+                        <small>Add payment via the form here!</small>
                     </div>
                     <form action="{{ route('keuangan_detail.store') }}" method="POST" enctype="multipart/form-data">
                         @method('POST')
@@ -181,11 +181,11 @@
                                     <div class="form-group form-float">
                                         <div class="form-line @error('payment_categories_id') error focused @enderror"">
                                             <p>
-                                                Kategori
+                                                Category Payment
                                             </p>
                                             <select name="payment_categories_id" id="payment_categories_id"
                                                 class="form-control show-tick">
-                                                <option value="">-- Pilih Kategori --</option>
+                                                <option value="">-- Choose Category Payment --</option>
                                                 @foreach ($biodata->PaymentAmount as $item)
                                                     @php
                                                         $biaya = 0;
@@ -234,7 +234,7 @@
                                     <div class="form-line @error('payment') error focused @enderror">
                                         <input type="number" id="payment" value="{{ old('payment') }}"
                                             name="payment"class="form-control" required>
-                                        <label class="form-label">Bayar</label>
+                                        <label class="form-label">Amount</label>
                                     </div>
                                 </div>
                             </div>
@@ -242,7 +242,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line @error('bukti') error focused @enderror">
                                         <small>
-                                            Bukti Pembayaran <b>* Optional</b>
+                                            Proof of payment <b>* Optional</b>
                                         </small>
                                         <input type="file" id="buktis" accept="image/*,image/png,image/jpeg,image/jpg"
                                             name="buktis"class="form-control">
@@ -268,9 +268,9 @@
                                             <option value="0" {{ old('payment_status') == '0' ? 'selected' : '' }}>
                                                 Pending</option>
                                             <option value="1" {{ old('payment_status') == '1' ? 'selected' : '' }}>
-                                                Sukses</option>
+                                                Success</option>
                                             <option value="2" {{ old('payment_status') == '2' ? 'selected' : '' }}>
-                                                Gagal / Cancel</option>
+                                                Fail / Cancel</option>
                                         </select>
 
                                     </div>

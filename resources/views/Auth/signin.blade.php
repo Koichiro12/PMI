@@ -18,7 +18,7 @@
                     <form id="sign_in" action="{{ route('auth') }}" enctype="multipart/form-data" method="POST">
                         @csrf
                         @method('POST')
-                        <div class="msg">Masukan username dan password disini !</div>
+                        <div class="msg">Enter your username and password here!</div>
                         <div class="input-group">
                             <span class="input-group-addon">
                                 <i class="material-icons">person</i>
